@@ -7,6 +7,7 @@
     <title>ابراهیم نیکدل مقدم</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
     <style>
+        /* ... all existing styles unchanged ... */
         * {
             margin: 0;
             padding: 0;
@@ -211,7 +212,21 @@
         }
 
         .contact-icon {
-            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .contact-value {
@@ -227,7 +242,7 @@
             color: var(--info-bg);
         }
 
-        /* Info Section */
+        /* ... all other existing styles unchanged ... */
         .info-section {
             width: 100%;
             background: var(--info-bg);
@@ -361,7 +376,7 @@
             transition: color 0.5s ease;
         }
 
-        /* Wrapper */
+        /* Scale, poem, etc. unchanged... */
         .scale-wrapper {
             position: relative;
             display: flex;
@@ -372,7 +387,6 @@
             height: 320px;
         }
 
-        /* Poem */
         .background-poem {
             position: absolute;
             font-family: "Noto Nastaliq Urdu", serif;
@@ -400,7 +414,6 @@
                 0 0 45px rgba(128,128,0,0.5);
         }
 
-        /* Scale */
         .justice-scale {
             position: relative;
             width: 240px;
@@ -538,7 +551,6 @@
         .plate-right::before { left: 10px; }
         .plate-right::after { right: 10px; }
 
-        /* Feather */
         .feather-container {
             position: relative;
             width: 40px;
@@ -581,7 +593,6 @@
             clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
         }
 
-        /* Heart */
         .heart-container {
             position: relative;
             width: 28px;
@@ -654,7 +665,6 @@
             color: var(--card);
         }
 
-        /* Mobile */
         @media(max-width:768px) {
             body { padding: 8px; }
             .main-wrapper { gap: 20px; }
@@ -783,28 +793,47 @@
                     <div class="contact-grid">
                         <div class="contact-item">
                             <div class="contact-label">
-                                <span class="contact-icon">📞</span>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </span>
                                 تلفن
                             </div>
                             <div class="contact-value">۰۲۱-۱۲۳۴۵۶۷۸</div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-label">
-                                <span class="contact-icon">✉️</span>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </span>
                                 ایمیل
                             </div>
                             <div class="contact-value">info@example.com</div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-label">
-                                <span class="contact-icon">📍</span>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </span>
                                 آدرس
                             </div>
                             <div class="contact-value">تهران، خیابان ولیعصر</div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-label">
-                                <span class="contact-icon">🕐</span>
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </span>
                                 ساعات کاری
                             </div>
                             <div class="contact-value">شنبه تا چهارشنبه ۹ صبح تا ۵ عصر</div>
@@ -865,12 +894,10 @@
                 themeBtn.innerHTML = 'حالت روشن';
             }
 
-            // Contact section toggle
             contactHeader.addEventListener('click', function() {
                 contactSection.classList.toggle('open');
             });
 
-            // Info section toggle
             infoHeader.addEventListener('click', function() {
                 infoSection.classList.toggle('open');
             });
