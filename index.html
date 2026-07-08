@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,7 +23,6 @@
     --text:#111111;
     --secondary:#666666;
     --border:#dddddd;
-    --hover:#111111;
 }
 
 .dark{
@@ -31,7 +31,6 @@
     --text:#f5f5f5;
     --secondary:#aaaaaa;
     --border:#333333;
-    --hover:#ffffff;
 }
 
 
@@ -43,8 +42,16 @@ body{
     justify-content:center;
     align-items:center;
     padding:30px;
-    transition:.3s;
 }
+
+
+/* prevents animation during theme switch */
+
+.no-transition,
+.no-transition *{
+    transition:none !important;
+}
+
 
 
 .container{
@@ -61,15 +68,11 @@ body{
 
     display:flex;
 
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.12);
-
-    transition:.3s;
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
 
 }
 
 
-/* Sidebar */
 
 .sidebar{
 
@@ -80,6 +83,7 @@ body{
     border-left:1px solid var(--border);
 
 }
+
 
 
 .logo{
@@ -102,13 +106,12 @@ body{
 
 
 
-/* Menu */
-
 .menu{
 
     list-style:none;
 
 }
+
 
 
 .menu li{
@@ -118,11 +121,10 @@ body{
 }
 
 
+
 .menu a{
 
-    display:flex;
-
-    align-items:center;
+    display:block;
 
     text-decoration:none;
 
@@ -132,20 +134,52 @@ body{
 
     font-size:18px;
 
-    transition:.25s;
-
 }
+
 
 
 .menu a:hover{
 
-    background:var(--hover);
+    background:var(--text);
 
     color:var(--card);
 
-    padding-right:35px;
+}
+
+
+
+.content{
+
+    flex:1;
+
+    padding:70px;
 
 }
+
+
+
+.content h1{
+
+    color:var(--text);
+
+    font-size:42px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.content p{
+
+    color:var(--secondary);
+
+    line-height:2.2;
+
+    font-size:18px;
+
+}
+
 
 
 /* Theme button */
@@ -160,6 +194,7 @@ body{
 }
 
 
+
 .theme-switch{
 
     width:100%;
@@ -170,61 +205,15 @@ body{
 
     border:1px solid var(--border);
 
-    background:transparent;
+    background:var(--card);
 
     color:var(--text);
 
     font-family:"Vazirmatn";
 
-    font-size:16px;
-
     cursor:pointer;
 
-    transition:.25s;
-
-}
-
-
-.theme-switch:hover{
-
-    background:var(--hover);
-
-    color:var(--card);
-
-}
-
-
-
-/* Content */
-
-
-.content{
-
-    flex:1;
-
-    padding:70px;
-
-}
-
-
-.content h1{
-
-    color:var(--text);
-
-    font-size:42px;
-
-    margin-bottom:25px;
-
-}
-
-
-.content p{
-
-    color:var(--secondary);
-
-    line-height:2.2;
-
-    font-size:18px;
+    font-size:16px;
 
 }
 
@@ -257,8 +246,6 @@ body{
 
     margin:auto;
 
-    border-radius:10px;
-
 }
 
 
@@ -277,8 +264,6 @@ body{
 
     background:var(--text);
 
-    border-radius:10px;
-
 }
 
 
@@ -290,29 +275,23 @@ body{
 
     top:10px;
 
-    width:2px;
-
     height:75px;
+
+    width:2px;
 
     background:var(--text);
 
 }
 
 
-
 .left-chain{
-
     left:35px;
-
 }
 
 
 .right-chain{
-
     right:35px;
-
 }
-
 
 
 .plate{
@@ -327,26 +306,18 @@ body{
 
     background:var(--text);
 
-    border-radius:50%;
-
 }
 
 
 
 .left-plate{
-
     left:25px;
-
 }
-
 
 
 .right-plate{
-
     right:25px;
-
 }
-
 
 
 .plate div{
@@ -360,7 +331,6 @@ body{
     margin:auto;
 
 }
-
 
 
 .pole{
@@ -378,8 +348,6 @@ body{
     height:155px;
 
     background:var(--text);
-
-    border-radius:10px;
 
 }
 
@@ -401,8 +369,6 @@ body{
 
     background:var(--text);
 
-    border-radius:10px;
-
 }
 
 
@@ -412,72 +378,37 @@ body{
 
 @media(max-width:768px){
 
-    body{
+.container{
 
-        padding:15px;
-
-    }
-
-
-    .container{
-
-        flex-direction:column;
-
-    }
-
-
-    .sidebar{
-
-        width:100%;
-
-        border-left:none;
-
-    }
-
-
-    .logo{
-
-        font-size:34px;
-
-    }
-
-
-    .content{
-
-        padding:35px 25px;
-
-    }
-
-
-    .content h1{
-
-        font-size:32px;
-
-    }
-
+    flex-direction:column;
 
 }
 
 
+.sidebar{
 
-@media(max-width:400px){
+    width:100%;
 
-
-    .logo{
-
-        font-size:28px;
-
-    }
-
-
-    .justice-scale{
-
-        transform:scale(.8);
-
-    }
-
+    border-left:none;
 
 }
+
+
+.content{
+
+    padding:35px 25px;
+
+}
+
+
+.logo{
+
+    font-size:34px;
+
+}
+
+}
+
 
 </style>
 
@@ -492,20 +423,16 @@ body{
 
 <div class="content">
 
-
 <h1>خوش آمدید</h1>
-
 
 <p>
 محتوای صفحه اینجا قرار می‌گیرد.
 </p>
 
 
-
 <div class="justice-scale">
 
 <div class="scale-top"></div>
-
 
 <div class="beam">
 
@@ -516,31 +443,22 @@ body{
 </div>
 
 
-
 <div class="plate left-plate">
-
 <div></div>
-
 </div>
-
 
 
 <div class="plate right-plate">
-
 <div></div>
-
 </div>
 
 
-
 <div class="pole"></div>
-
 
 <div class="base"></div>
 
 
 </div>
-
 
 
 </div>
@@ -551,60 +469,30 @@ body{
 
 
 <div class="logo">
-
 ابراهیم نیکدل مقدم
-
 </div>
-
 
 
 <ul class="menu">
 
+<li><a href="#">وکیل پایه یک دادگستری</a></li>
 
-<li>
-<a href="#">
-وکیل پایه یک دادگستری
-</a>
-</li>
+<li><a href="#">مقالات</a></li>
 
+<li><a href="#">مباحث حقوقی</a></li>
 
-<li>
-<a href="#">
-مقالات
-</a>
-</li>
-
-
-<li>
-<a href="#">
-مباحث حقوقی
-</a>
-</li>
-
-
-<li>
-<a href="#">
-تماس با ما
-</a>
-</li>
-
+<li><a href="#">تماس با ما</a></li>
 
 </ul>
 
 
-
 <div class="theme-container">
 
-
 <button class="theme-switch" onclick="toggleTheme()">
-
 🌙 حالت تاریک
-
 </button>
 
-
 </div>
-
 
 
 </div>
@@ -619,6 +507,7 @@ body{
 
 function toggleTheme(){
 
+document.documentElement.classList.add("no-transition");
 
 document.body.classList.toggle("dark");
 
@@ -626,26 +515,28 @@ document.body.classList.toggle("dark");
 let button=document.querySelector(".theme-switch");
 
 
-
 if(document.body.classList.contains("dark")){
-
 
 button.innerHTML="☀️ حالت روشن";
 
 localStorage.setItem("theme","dark");
 
-
 }
 
 else{
-
 
 button.innerHTML="🌙 حالت تاریک";
 
 localStorage.setItem("theme","light");
 
-
 }
+
+
+setTimeout(()=>{
+
+document.documentElement.classList.remove("no-transition");
+
+},50);
 
 
 }
@@ -657,11 +548,9 @@ window.onload=function(){
 
 if(localStorage.getItem("theme")=="dark"){
 
-
 document.body.classList.add("dark");
 
 document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
-
 
 }
 
