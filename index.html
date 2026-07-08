@@ -29,6 +29,10 @@
             --heart-color: #2C2C2C;
             --poem-opacity: 0.05;
             --vignette-color: rgba(210, 180, 140, 0.2);
+            --info-bg: #2C2C2C;
+            --info-text: #F5F0EB;
+            --info-border: #F5F0EB;
+            --info-secondary: #CCCCCC;
         }
 
         .dark {
@@ -47,6 +51,10 @@
             --heart-color: #F5F0EB;
             --poem-opacity: 0.07;
             --vignette-color: rgba(180, 150, 110, 0.1);
+            --info-bg: #2C2C2C;
+            --info-text: #F5F0EB;
+            --info-border: #F5F0EB;
+            --info-secondary: #CCCCCC;
         }
 
         html, body {
@@ -109,16 +117,17 @@
 
         .contact-section {
             width: 100%;
-            background: var(--card);
+            background: var(--info-bg);
             border-radius: 22px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,.08);
-            border: 2px solid var(--border);
+            border: 2px solid var(--info-border);
+            color: var(--info-text);
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         .contact-title {
-            color: var(--text);
+            color: var(--info-text);
             font-size: 28px;
             font-weight: 700;
             text-align: center;
@@ -135,18 +144,18 @@
         .contact-item {
             text-align: center;
             padding: 20px;
-            border: 2px solid var(--border);
+            border: 2px solid var(--info-border);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            background: var(--text);
-            color: var(--card);
+            background: var(--info-text);
+            color: var(--info-bg);
         }
 
         .contact-label {
-            color: var(--secondary);
+            color: var(--info-text);
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 10px;
@@ -154,7 +163,7 @@
         }
 
         .contact-value {
-            color: var(--secondary);
+            color: var(--info-secondary);
             font-size: 18px;
             font-weight: 700;
             opacity: 0.9;
@@ -163,7 +172,87 @@
 
         .contact-item:hover .contact-label,
         .contact-item:hover .contact-value {
-            color: var(--card);
+            color: var(--info-bg);
+        }
+
+        /* Info Section */
+        .info-section {
+            width: 100%;
+            background: var(--info-bg);
+            border-radius: 22px;
+            border: 2px solid var(--info-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            color: var(--info-text);
+            overflow: hidden;
+            transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .info-header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .info-header:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .info-header-title {
+            color: var(--info-text);
+            font-size: 20px;
+            font-weight: 700;
+            transition: color 0.5s ease;
+        }
+
+        .info-toggle {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--info-text);
+            color: var(--info-bg);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            transition: transform 0.4s ease, background 0.5s ease, color 0.5s ease;
+        }
+
+        .info-section.open .info-toggle {
+            transform: rotate(180deg);
+        }
+
+        .info-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .info-section.open .info-content {
+            max-height: 500px;
+        }
+
+        .info-inner {
+            padding: 0 40px 30px;
+        }
+
+        .info-text {
+            color: var(--info-secondary);
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 2.2;
+            transition: color 0.5s ease;
+        }
+
+        .info-divider {
+            width: 100%;
+            height: 2px;
+            background: var(--info-border);
+            margin: 20px 0;
+            opacity: 0.5;
         }
 
         .sidebar {
@@ -550,6 +639,10 @@
             .contact-item { padding: 15px; }
             .contact-label { font-size: 14px; }
             .contact-value { font-size: 16px; }
+            .info-header { padding: 15px 20px; }
+            .info-header-title { font-size: 18px; }
+            .info-inner { padding: 0 20px 20px; }
+            .info-text { font-size: 14px; }
             .sidebar { width: 100%; min-width: 100%; border-left: none; border-bottom: 2px solid var(--border); }
             .logo { font-size: 30px; padding: 25px 15px; }
             .menu a { padding: 16px 20px; font-size: 16px; font-weight: 700; }
@@ -681,6 +774,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="info-section" id="infoSection">
+            <div class="info-header" id="infoHeader">
+                <span class="info-header-title">اطلاعات و یادداشت‌ها</span>
+                <span class="info-toggle" id="infoToggle">▼</span>
+            </div>
+            <div class="info-content" id="infoContent">
+                <div class="info-inner">
+                    <div class="info-divider"></div>
+                    <p class="info-text">
+                        این بخش برای یادداشت‌ها و اطلاعات تکمیلی در نظر گرفته شده است. می‌توانید هرگونه مطلب، توضیحات یا نکات مهم را در این قسمت قرار دهید.
+                    </p>
+                    <div class="info-divider"></div>
+                    <p class="info-text">
+                        لطفاً برای اطلاعات بیشتر با ما تماس بگیرید یا به بخش مقالات مراجعه فرمایید.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -691,6 +803,8 @@
             const plateLeft = document.getElementById('plateLeft');
             const plateRight = document.getElementById('plateRight');
             const backgroundPoem = document.getElementById('backgroundPoem');
+            const infoSection = document.getElementById('infoSection');
+            const infoHeader = document.getElementById('infoHeader');
 
             let glowTimer = null;
             let leftTimer = null;
@@ -709,6 +823,11 @@
                 body.classList.add('dark');
                 themeBtn.innerHTML = 'حالت روشن';
             }
+
+            // Info section toggle
+            infoHeader.addEventListener('click', function() {
+                infoSection.classList.toggle('open');
+            });
 
             function glow() {
                 if (glowTimer) clearTimeout(glowTimer);
