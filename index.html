@@ -35,6 +35,8 @@
             --info-secondary: #CCCCCC;
             --particle-color: #FFD700;
             --glow-color: rgba(255, 215, 0, 0.8);
+            --toggle-bg: #F5F0EB;
+            --toggle-text: #2C2C2C;
         }
 
         .dark {
@@ -59,6 +61,8 @@
             --info-secondary: #CCCCCC;
             --particle-color: #87CEEB;
             --glow-color: rgba(135, 206, 235, 0.8);
+            --toggle-bg: #2C2C2C;
+            --toggle-text: #F5F0EB;
         }
 
         html, body {
@@ -108,8 +112,8 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: var(--card);
-            border: 2px solid var(--border);
+            background: var(--toggle-bg);
+            border: 2px solid var(--toggle-text);
             cursor: pointer;
             z-index: 1001;
             display: flex;
@@ -117,6 +121,7 @@
             justify-content: center;
             transition: all 0.3s ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: var(--toggle-text);
         }
 
         .theme-toggle-circle:hover {
@@ -127,6 +132,7 @@
             font-size: 20px;
             transition: all 0.3s ease;
             position: relative;
+            line-height: 1;
         }
 
         /* Sun rays animation */
@@ -966,10 +972,4 @@
 
         <div class="contact-section" id="contactSection">
             <div class="contact-header" id="contactHeader">
-                <span class="contact-header-title">اطلاعات تماس</span>
-                <span class="contact-toggle" id="contactToggle">▼</span>
-            </div>
-            <div class="contact-content" id="contactContent">
-                <div class="contact-inner">
-                    <div class="contact-grid">
-                        <
+                <span class="
