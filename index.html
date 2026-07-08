@@ -2,680 +2,304 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ابراهیم نیکدل مقدم</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
-
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-
-:root{
-
---background:#f3f4f6;
---card:white;
---text:#111;
---secondary:#666;
---border:#ddd;
-
-}
-
-
-.dark{
-
---background:#101010;
---card:#1c1c1c;
---text:#f5f5f5;
---secondary:#aaa;
---border:#333;
-
-}
-
-
-body{
-
-background:var(--background);
-
-font-family:"Vazirmatn",sans-serif;
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:30px;
-
-transition:.35s;
-
-}
-
-
-
-.container{
-
-width:1000px;
-
-max-width:100%;
-
-min-height:620px;
-
-background:var(--card);
-
-border-radius:22px;
-
-overflow:hidden;
-
-display:flex;
-
-box-shadow:0 20px 50px rgba(0,0,0,.12);
-
-transition:.35s;
-
-}
-
-
-
-.sidebar{
-
-width:300px;
-
-background:var(--card);
-
-border-left:1px solid var(--border);
-
-transition:.35s;
-
-}
-
-
-
-.logo{
-
-font-family:"Noto Nastaliq Urdu",serif;
-
-font-size:42px;
-
-text-align:center;
-
-color:var(--text);
-
-padding:40px 20px;
-
-line-height:2;
-
-border-bottom:1px solid var(--border);
-
-}
-
-
-
-.menu{
-
-list-style:none;
-
-}
-
-
-.menu li{
-
-border-bottom:1px solid var(--border);
-
-}
-
-
-.menu a{
-
-display:block;
-
-text-decoration:none;
-
-color:var(--text);
-
-padding:22px 25px;
-
-font-size:18px;
-
-transition:.25s;
-
-}
-
-
-
-.menu a:hover{
-
-background:var(--text);
-
-color:var(--card);
-
-padding-right:35px;
-
-}
-
-
-
-.content{
-
-flex:1;
-
-padding:70px;
-
-}
-
-
-
-.content h1{
-
-color:var(--text);
-
-font-size:42px;
-
-margin-bottom:25px;
-
-}
-
-
-
-.content p{
-
-color:var(--secondary);
-
-line-height:2.2;
-
-}
-
-
-
-.case-box{
-
-margin-top:40px;
-
-padding:30px;
-
-border:1px solid var(--border);
-
-border-radius:15px;
-
-}
-
-
-
-.case-box h2{
-
-color:var(--text);
-
-margin-bottom:20px;
-
-}
-
-
-
-.case-box input{
-
-width:100%;
-
-padding:15px;
-
-border-radius:10px;
-
-border:1px solid var(--border);
-
-background:var(--card);
-
-color:var(--text);
-
-font-family:"Vazirmatn";
-
-font-size:16px;
-
-}
-
-
-
-.case-box button{
-
-margin-top:15px;
-
-width:100%;
-
-padding:15px;
-
-border:none;
-
-border-radius:10px;
-
-background:var(--text);
-
-color:var(--card);
-
-cursor:pointer;
-
-font-size:16px;
-
-}
-
-
-
-#error{
-
-color:red;
-
-margin-top:15px;
-
-}
-
-
-
-/* Justice scale */
-
-
-.justice-scale{
-
-position:relative;
-
-width:280px;
-
-height:240px;
-
-margin:50px auto 0;
-
-}
-
-
-
-.scale-top,
-.beam,
-.left-chain,
-.right-chain,
-.plate,
-.plate div,
-.pole,
-.base{
-
-background:var(--text);
-
-transition:.35s;
-
-}
-
-
-
-.scale-top{
-
-width:14px;
-
-height:30px;
-
-margin:auto;
-
-}
-
-
-
-.beam{
-
-position:absolute;
-
-top:30px;
-
-left:40px;
-
-width:200px;
-
-height:9px;
-
-}
-
-
-
-.left-chain,
-.right-chain{
-
-position:absolute;
-
-top:10px;
-
-height:75px;
-
-width:2px;
-
-}
-
-
-
-.left-chain{
-
-left:35px;
-
-}
-
-
-
-.right-chain{
-
-right:35px;
-
-}
-
-
-
-.plate{
-
-position:absolute;
-
-top:105px;
-
-width:90px;
-
-height:12px;
-
-}
-
-
-
-.left-plate{
-
-left:25px;
-
-}
-
-
-
-.right-plate{
-
-right:25px;
-
-}
-
-
-
-.plate div{
-
-height:40px;
-
-width:2px;
-
-margin:auto;
-
-}
-
-
-
-.pole{
-
-position:absolute;
-
-top:35px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:12px;
-
-height:155px;
-
-}
-
-
-
-.base{
-
-position:absolute;
-
-bottom:15px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:150px;
-
-height:16px;
-
-}
-
-
-
-/* button */
-
-
-.theme-container{
-
-padding:25px;
-
-border-top:1px solid var(--border);
-
-}
-
-
-
-.theme-switch{
-
-width:100%;
-
-padding:14px;
-
-border-radius:12px;
-
-border:1px solid var(--border);
-
-background:var(--card);
-
-color:var(--text);
-
-cursor:pointer;
-
-}
-
-
-
-@media(max-width:768px){
-
-.container{
-
-flex-direction:column;
-
-}
-
-.sidebar{
-
-width:100%;
-
-border-left:none;
-
-}
-
-.content{
-
-padding:35px 25px;
-
-}
-
-.logo{
-
-font-size:34px;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابراهیم نیکدل مقدم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #f3f4f6;
+            --card: white;
+            --text: #111;
+            --secondary: #666;
+            --border: #ddd;
+        }
+
+        .dark {
+            --background: #101010;
+            --card: #1c1c1c;
+            --text: #f5f5f5;
+            --secondary: #aaa;
+            --border: #333;
+        }
+
+        body {
+            background: var(--background);
+            font-family: "Vazirmatn", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            transition: .35s;
+        }
+
+        .container {
+            width: 1000px;
+            max-width: 100%;
+            min-height: 620px;
+            background: var(--card);
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+            transition: .35s;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: var(--card);
+            border-left: 1px solid var(--border);
+            transition: .35s;
+        }
+
+        .logo {
+            font-family: "Noto Nastaliq Urdu", serif;
+            font-size: 42px;
+            text-align: center;
+            color: var(--text);
+            padding: 40px 20px;
+            line-height: 2;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu a {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            padding: 22px 25px;
+            font-size: 18px;
+            transition: .25s;
+        }
+
+        .menu a:hover {
+            background: var(--text);
+            color: var(--card);
+            padding-right: 35px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 70px;
+        }
+
+        .content h1 {
+            color: var(--text);
+            font-size: 42px;
+            margin-bottom: 25px;
+        }
+
+        .content p {
+            color: var(--secondary);
+            line-height: 2.2;
+        }
+
+        /* Justice scale */
+        .justice-scale {
+            position: relative;
+            width: 280px;
+            height: 240px;
+            margin: 50px auto 0;
+        }
+
+        .scale-top,
+        .beam,
+        .left-chain,
+        .right-chain,
+        .plate,
+        .plate div,
+        .pole,
+        .base {
+            background: var(--text);
+            transition: .35s;
+        }
+
+        .scale-top {
+            width: 14px;
+            height: 30px;
+            margin: auto;
+        }
+
+        .beam {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            width: 200px;
+            height: 9px;
+        }
+
+        .left-chain,
+        .right-chain {
+            position: absolute;
+            top: 10px;
+            height: 75px;
+            width: 2px;
+        }
+
+        .left-chain {
+            left: 35px;
+        }
+
+        .right-chain {
+            right: 35px;
+        }
+
+        .plate {
+            position: absolute;
+            top: 105px;
+            width: 90px;
+            height: 12px;
+        }
+
+        .left-plate {
+            left: 25px;
+        }
+
+        .right-plate {
+            right: 25px;
+        }
+
+        .plate div {
+            height: 40px;
+            width: 2px;
+            margin: auto;
+        }
+
+        .pole {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 155px;
+        }
+
+        .base {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 16px;
+        }
+
+        /* button */
+        .theme-container {
+            padding: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        .theme-switch {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        @media(max-width:768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-left: none;
+            }
+
+            .content {
+                padding: 35px 25px;
+            }
+
+            .logo {
+                font-size: 34px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-<div class="container">
-
-<div class="content">
-
-<h1>
-خوش آمدید
-</h1>
-
-<p>
-محتوای صفحه اینجا قرار می‌گیرد.
-</p>
-
-<div class="case-box">
-
-<h2>
-ورود به پرونده
-</h2>
-
-<input id="caseCode" placeholder="کد پرونده را وارد کنید">
-
-<button onclick="login()">
-
-مشاهده پرونده
-
-</button>
-
-<p id="error"></p>
-
-</div>
-
-<div class="justice-scale">
-
-<div class="scale-top"></div>
-
-<div class="beam">
-
-<span class="left-chain"></span>
-
-<span class="right-chain"></span>
-
-</div>
-
-<div class="plate left-plate"><div></div></div>
-
-<div class="plate right-plate"><div></div></div>
-
-<div class="pole"></div>
-
-<div class="base"></div>
-
-</div>
-
-</div>
-
-<div class="sidebar">
-
-<div class="logo">
-
-ابراهیم نیکدل مقدم
-
-</div>
-
-<ul class="menu">
-
-<li><a href="#">وکیل پایه یک دادگستری</a></li>
-
-<li><a href="articles.html">مقالات</a></li>
-
-<li><a href="#">مباحث حقوقی</a></li>
-
-<li><a href="#">تماس با ما</a></li>
-
-<li><a href="#case">ورود به پرونده</a></li>
-
-</ul>
-
-<div class="theme-container">
-
-<button class="theme-switch" onclick="toggleTheme()">
-
-🌙 حالت تاریک
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-const cases={
-
-"LAW-1001":"case1.html",
-
-"LAW-1002":"case2.html",
-
-"LAW-1003":"case3.html"
-
-};
-
-function login(){
-
-let code=document.getElementById("caseCode").value.trim();
-
-if(cases[code]){
-
-window.location.href=cases[code];
-
-}
-
-else{
-
-document.getElementById("error").innerHTML="کد پرونده اشتباه است";
-
-}
-
-}
-
-function toggleTheme(){
-
-document.body.classList.toggle("dark");
-
-let button=document.querySelector(".theme-switch");
-
-if(document.body.classList.contains("dark")){
-
-button.innerHTML="☀️ حالت روشن";
-
-localStorage.setItem("theme","dark");
-
-}
-
-else{
-
-button.innerHTML="🌙 حالت تاریک";
-
-localStorage.setItem("theme","light");
-
-}
-
-}
-
-window.onload=function(){
-
-if(localStorage.getItem("theme")=="dark"){
-
-document.body.classList.add("dark");
-
-document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
-
-}
-
-}
-
-</script>
-
+    <div class="container">
+        <div class="content">
+            <h1>
+                خوش آمدید
+            </h1>
+            <p>
+                محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.
+            </p>
+
+            <!-- ترازوی عدالت همچنان به عنوان المان بصری باقی مانده است -->
+            <div class="justice-scale">
+                <div class="scale-top"></div>
+                <div class="beam">
+                    <span class="left-chain"></span>
+                    <span class="right-chain"></span>
+                </div>
+                <div class="plate left-plate">
+                    <div></div>
+                </div>
+                <div class="plate right-plate">
+                    <div></div>
+                </div>
+                <div class="pole"></div>
+                <div class="base"></div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="logo">
+                ابراهیم نیکدل مقدم
+            </div>
+            <ul class="menu">
+                <li><a href="#">وکیل پایه یک دادگستری</a></li>
+                <li><a href="articles.html">مقالات</a></li>
+                <li><a href="#">مباحث حقوقی</a></li>
+                <li><a href="#">تماس با ما</a></li>
+            </ul>
+            <div class="theme-container">
+                <button class="theme-switch" onclick="toggleTheme()">
+                    🌙 حالت تاریک
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+            let button = document.querySelector(".theme-switch");
+            if (document.body.classList.contains("dark")) {
+                button.innerHTML = "☀️ حالت روشن";
+                localStorage.setItem("theme", "dark");
+            } else {
+                button.innerHTML = "🌙 حالت تاریک";
+                localStorage.setItem("theme", "light");
+            }
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem("theme") == "dark") {
+                document.body.classList.add("dark");
+                document.querySelector(".theme-switch").innerHTML = "☀️ حالت روشن";
+            }
+        }
+    </script>
 </body>
 
 </html>
