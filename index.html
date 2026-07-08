@@ -28,6 +28,9 @@
             --feather-color: #4b5563;
             --heart-color: #6b7280;
             --object-glow: rgba(0,0,0,0.1);
+            /* Peace glow colors */
+            --glow-color-1: rgba(135, 206, 235, 0);
+            --glow-color-2: rgba(128, 128, 0, 0);
         }
 
         .dark {
@@ -45,6 +48,9 @@
             --feather-color: #e5e7eb;
             --heart-color: #d1d5db;
             --object-glow: rgba(255,255,255,0.08);
+            /* Peace glow colors */
+            --glow-color-1: rgba(135, 206, 235, 0);
+            --glow-color-2: rgba(128, 128, 0, 0);
         }
 
         html, body {
@@ -138,6 +144,7 @@
             justify-content: center;
             overflow: hidden;
             min-width: 0;
+            position: relative;
         }
 
         .content h1 {
@@ -156,11 +163,80 @@
             max-width: 500px;
         }
 
+        /* ---- Background Text Behind Scale ---- */
+        .scale-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .background-text {
+            position: absolute;
+            font-family: "Noto Nastaliq Urdu", serif;
+            font-size: 70px;
+            color: var(--text);
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+            text-align: center;
+            line-height: 1.6;
+            transition: all 1.2s ease;
+            text-shadow: 
+                0 0 20px var(--glow-color-1),
+                0 0 40px var(--glow-color-1),
+                0 0 80px var(--glow-color-2),
+                0 0 120px var(--glow-color-2),
+                0 0 160px var(--glow-color-1);
+            filter: blur(0px);
+        }
+
+        .background-text.glowing {
+            opacity: 0.18;
+            text-shadow: 
+                0 0 15px rgba(135, 206, 235, 0.9),
+                0 0 30px rgba(135, 206, 235, 0.7),
+                0 0 50px rgba(135, 206, 235, 0.5),
+                0 0 80px rgba(128, 128, 0, 0.6),
+                0 0 120px rgba(128, 128, 0, 0.4),
+                0 0 180px rgba(135, 206, 235, 0.3);
+            animation: glowPulse 1.5s ease-in-out;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                text-shadow: 
+                    0 0 15px rgba(135, 206, 235, 0.9),
+                    0 0 30px rgba(135, 206, 235, 0.7),
+                    0 0 50px rgba(135, 206, 235, 0.5),
+                    0 0 80px rgba(128, 128, 0, 0.6),
+                    0 0 120px rgba(128, 128, 0, 0.4);
+            }
+            50% {
+                text-shadow: 
+                    0 0 25px rgba(135, 206, 235, 1),
+                    0 0 50px rgba(135, 206, 235, 0.9),
+                    0 0 75px rgba(135, 206, 235, 0.7),
+                    0 0 110px rgba(128, 128, 0, 0.8),
+                    0 0 160px rgba(128, 128, 0, 0.6);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(135, 206, 235, 0.9),
+                    0 0 30px rgba(135, 206, 235, 0.7),
+                    0 0 50px rgba(135, 206, 235, 0.5),
+                    0 0 80px rgba(128, 128, 0, 0.6),
+                    0 0 120px rgba(128, 128, 0, 0.4);
+            }
+        }
+
         /* Polished Interactive Justice Scale */
         .justice-scale-container {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .justice-scale {
@@ -169,6 +245,7 @@
             height: 280px;
             cursor: pointer;
             transition: transform 0.3s;
+            z-index: 2;
         }
 
         .justice-scale:active {
@@ -518,6 +595,8 @@
             margin-top: 15px;
             opacity: 0.8;
             transition: all 0.35s;
+            position: relative;
+            z-index: 1;
         }
 
         /* button */
@@ -592,6 +671,10 @@
                 font-size: 14px;
                 line-height: 2;
                 max-width: 100%;
+            }
+
+            .background-text {
+                font-size: 45px;
             }
 
             .justice-scale {
@@ -686,6 +769,10 @@
                 padding: 20px 12px;
             }
 
+            .background-text {
+                font-size: 35px;
+            }
+
             .justice-scale {
                 width: 170px;
                 height: 210px;
@@ -764,29 +851,32 @@
                 محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.
             </p>
 
-            <!-- ترازوی عدالت با پر و قلب ماعت -->
-            <div class="justice-scale-container" id="scaleContainer">
-                <div class="justice-scale" id="justiceScale">
-                    <div class="scale-ornament"></div>
-                    <div class="scale-beam" id="scaleBeam">
-                        <span class="chain-left"></span>
-                        <span class="chain-right"></span>
-                    </div>
-                    <div class="plate-left" id="plateLeft">
-                        <div class="feather-container">
-                            <div class="feather-shaft"></div>
-                            <div class="feather-vane-left"></div>
-                            <div class="feather-vane-right"></div>
-                            <div class="feather-barbs"></div>
+            <!-- ترازوی عدالت با متن پشت صحنه -->
+            <div class="scale-wrapper">
+                <div class="background-text" id="backgroundText">ابراهیم نیکدل مقدم</div>
+                <div class="justice-scale-container" id="scaleContainer">
+                    <div class="justice-scale" id="justiceScale">
+                        <div class="scale-ornament"></div>
+                        <div class="scale-beam" id="scaleBeam">
+                            <span class="chain-left"></span>
+                            <span class="chain-right"></span>
                         </div>
-                    </div>
-                    <div class="plate-right" id="plateRight">
-                        <div class="heart-container">
-                            <div class="heart-shape"></div>
+                        <div class="plate-left" id="plateLeft">
+                            <div class="feather-container">
+                                <div class="feather-shaft"></div>
+                                <div class="feather-vane-left"></div>
+                                <div class="feather-vane-right"></div>
+                                <div class="feather-barbs"></div>
+                            </div>
                         </div>
+                        <div class="plate-right" id="plateRight">
+                            <div class="heart-container">
+                                <div class="heart-shape"></div>
+                            </div>
+                        </div>
+                        <div class="scale-pole"></div>
+                        <div class="scale-base"></div>
                     </div>
-                    <div class="scale-pole"></div>
-                    <div class="scale-base"></div>
                 </div>
             </div>
             <p class="scale-hint">👆 روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
@@ -833,11 +923,24 @@
             initScaleInteraction();
         }
 
-        // Interactive scale logic
+        // Interactive scale logic with background text glow
         function initScaleInteraction() {
             const scaleBeam = document.getElementById('scaleBeam');
             const plateLeft = document.getElementById('plateLeft');
             const plateRight = document.getElementById('plateRight');
+            const backgroundText = document.getElementById('backgroundText');
+
+            function triggerGlow() {
+                // Remove and re-add the glowing class to restart animation
+                backgroundText.classList.remove('glowing');
+                void backgroundText.offsetWidth; // Trigger reflow
+                backgroundText.classList.add('glowing');
+                
+                // Remove glow after animation completes
+                setTimeout(() => {
+                    backgroundText.classList.remove('glowing');
+                }, 2000);
+            }
 
             function pullLeft() {
                 // Reset right side
@@ -847,6 +950,9 @@
                 // Pull left
                 scaleBeam.classList.add('pulled-left');
                 plateLeft.classList.add('pulled');
+                
+                // Trigger background glow
+                triggerGlow();
                 
                 // Reset after delay
                 setTimeout(() => {
@@ -863,6 +969,9 @@
                 // Pull right
                 scaleBeam.classList.add('pulled-right');
                 plateRight.classList.add('pulled');
+                
+                // Trigger background glow
+                triggerGlow();
                 
                 // Reset after delay
                 setTimeout(() => {
