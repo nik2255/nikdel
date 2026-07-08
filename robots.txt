@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nik2255.github.io/nikdel/sitemap.xml
