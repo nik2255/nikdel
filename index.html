@@ -56,6 +56,7 @@ body{
 
 .sidebar{
     width:270px;
+    flex-shrink:0;
     background:var(--card);
     border-left:1px solid var(--border);
 }
@@ -90,6 +91,7 @@ body{
 .menu a:hover{
     background:#111;
     color:white;
+    padding-right:35px;
 }
 
 .content{
@@ -108,13 +110,15 @@ body{
     line-height:2;
 }
 
+
 .law-image{
     width:100%;
-    max-width:450px;
+    max-width:420px;
     margin-top:35px;
     border-radius:15px;
     display:block;
 }
+
 
 .theme-switch{
     margin:25px;
@@ -125,6 +129,12 @@ body{
     background:var(--card);
     color:var(--text);
     cursor:pointer;
+    font-family:"Vazirmatn";
+}
+
+.theme-switch:hover{
+    background:#111;
+    color:white;
 }
 
 
@@ -136,6 +146,7 @@ body{
 
 .sidebar{
     width:100%;
+    border-left:none;
 }
 
 .logo{
@@ -150,14 +161,34 @@ body{
     font-size:30px;
 }
 
+.law-image{
+    max-width:100%;
+}
+
+}
+
+
+@media(max-width:400px){
+
+.logo{
+    font-size:25px;
+}
+
+.content h1{
+    font-size:26px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+
 <div class="container">
+
 
 <div class="content">
 
@@ -167,34 +198,47 @@ body{
 محتوای صفحه اینجا قرار می‌گیرد.
 </p>
 
-<img class="law-image" src="images/law-scale.png" alt="ترازو عدالت">
+
+<img class="law-image" 
+src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Scales_of_justice.svg/512px-Scales_of_justice.svg.png"
+alt="ترازو عدالت">
 
 
 </div>
 
 
+
 <div class="sidebar">
+
 
 <div class="logo">
 ابراهیم نیکدل مقدم
 </div>
 
+
 <ul class="menu">
 
 <li><a href="#">وکیل پایه یک دادگستری</a></li>
+
 <li><a href="#">مقالات</a></li>
+
 <li><a href="#">مباحث حقوقی</a></li>
+
 <li><a href="#">تماس با ما</a></li>
 
 </ul>
+
 
 <button class="theme-switch" onclick="toggleTheme()">
 🌙 حالت تاریک
 </button>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <script>
@@ -206,12 +250,17 @@ document.body.classList.toggle("dark");
 let button=document.querySelector(".theme-switch");
 
 if(document.body.classList.contains("dark")){
-    button.innerHTML="☀️ حالت روشن";
-    localStorage.setItem("theme","dark");
+
+button.innerHTML="☀️ حالت روشن";
+localStorage.setItem("theme","dark");
+
 }
+
 else{
-    button.innerHTML="🌙 حالت تاریک";
-    localStorage.setItem("theme","light");
+
+button.innerHTML="🌙 حالت تاریک";
+localStorage.setItem("theme","light");
+
 }
 
 }
@@ -220,13 +269,17 @@ else{
 window.onload=function(){
 
 if(localStorage.getItem("theme")=="dark"){
-    document.body.classList.add("dark");
-    document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
+
+document.body.classList.add("dark");
+
+document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
+
 }
 
 }
 
 </script>
+
 
 </body>
 </html>
