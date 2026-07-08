@@ -1,6 +1,3 @@
-Here is the enhanced HTML code with improved mobile compatibility, theme-integrated justice scale, interactive plates with pulling animation, and objects appearing in the plates.
-
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -22,12 +19,12 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             --text: #111;
             --secondary: #666;
             --border: #ddd;
-            --scale-base: #4a4a4a;
-            --scale-accent: #b8860b;
-            --scale-light: #e0c87c;
-            --scale-shadow: rgba(0,0,0,0.2);
-            --plate-bg: #f5f0e0;
-            --object-color: #8b7355;
+            --scale-main: #6b7280;
+            --scale-accent: #9ca3af;
+            --scale-light: #d1d5db;
+            --scale-shadow: rgba(0,0,0,0.15);
+            --plate-bg: #f9fafb;
+            --plate-border: #9ca3af;
         }
 
         .dark {
@@ -36,12 +33,18 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             --text: #f5f5f5;
             --secondary: #aaa;
             --border: #333;
-            --scale-base: #d4af37;
-            --scale-accent: #f0d060;
-            --scale-light: #f9e076;
+            --scale-main: #e5e7eb;
+            --scale-accent: #d1d5db;
+            --scale-light: #f3f4f6;
             --scale-shadow: rgba(0,0,0,0.5);
-            --plate-bg: #2a2520;
-            --object-color: #c9a96e;
+            --plate-bg: #1f2937;
+            --plate-border: #e5e7eb;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
 
         body {
@@ -71,11 +74,13 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
 
         .sidebar {
             width: 300px;
+            min-width: 300px;
             background: var(--card);
             border-left: 1px solid var(--border);
             transition: .35s;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .logo {
@@ -124,7 +129,9 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-y: auto;
+            justify-content: center;
+            overflow: hidden;
+            min-width: 0;
         }
 
         .content h1 {
@@ -140,6 +147,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             line-height: 2.2;
             text-align: center;
             transition: .35s;
+            max-width: 500px;
         }
 
         /* Polished Interactive Justice Scale */
@@ -147,7 +155,6 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             display: flex;
             justify-content: center;
             margin-top: 30px;
-            perspective: 800px;
         }
 
         .justice-scale {
@@ -170,7 +177,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             transform: translateX(-50%);
             width: 160px;
             height: 14px;
-            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 6px var(--scale-shadow);
             transition: all 0.35s;
@@ -197,7 +204,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             transform: translateX(-50%);
             width: 10px;
             height: 180px;
-            background: linear-gradient(to right, var(--scale-base), var(--scale-accent), var(--scale-base));
+            background: linear-gradient(to right, var(--scale-main), var(--scale-accent), var(--scale-main));
             border-radius: 3px;
             box-shadow: 0 2px 4px var(--scale-shadow);
             transition: all 0.35s;
@@ -211,7 +218,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             transform: translateX(-50%);
             width: 20px;
             height: 20px;
-            background: radial-gradient(circle, var(--scale-accent), var(--scale-base));
+            background: radial-gradient(circle, var(--scale-accent), var(--scale-main));
             border-radius: 50%;
             box-shadow: 0 2px 4px var(--scale-shadow);
             transition: all 0.35s;
@@ -252,7 +259,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             left: 15px;
             width: 210px;
             height: 12px;
-            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 8px var(--scale-shadow);
             transform-origin: center center;
@@ -299,9 +306,9 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             width: 85px;
             height: 55px;
             background: linear-gradient(180deg, var(--plate-bg) 0%, var(--card) 100%);
-            border: 3px solid var(--scale-accent);
+            border: 3px solid var(--plate-border);
             border-radius: 0 0 12px 12px;
-            box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255,255,255,0.1);
+            box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255,255,255,0.05);
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             display: flex;
             align-items: center;
@@ -353,25 +360,28 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             right: 10px;
         }
 
-        /* Objects in plates */
-        .plate-object {
-            font-size: 28px;
+        /* Decorative dot in plates */
+        .plate-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--scale-main);
+            border-radius: 50%;
             transition: all 0.5s;
-            animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 2px 3px var(--scale-shadow));
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 2px 4px var(--scale-shadow);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
         }
 
-        .plate-left .plate-object {
+        .plate-left .plate-dot {
             animation-delay: 0s;
         }
 
-        .plate-right .plate-object {
-            animation-delay: 1.5s;
+        .plate-right .plate-dot {
+            animation-delay: 1s;
         }
 
         /* Interaction hint */
@@ -428,6 +438,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
 
             .sidebar {
                 width: 100%;
+                min-width: 100%;
                 border-left: none;
                 border-bottom: 1px solid var(--border);
             }
@@ -443,7 +454,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             }
 
             .content {
-                padding: 25px 20px;
+                padding: 30px 20px;
             }
 
             .content h1 {
@@ -454,6 +465,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             .content p {
                 font-size: 14px;
                 line-height: 2;
+                max-width: 100%;
             }
 
             .justice-scale {
@@ -487,10 +499,6 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
 
             .plate-right {
                 right: 7px;
-            }
-
-            .plate-object {
-                font-size: 22px;
             }
 
             .scale-base {
@@ -537,10 +545,6 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
                 top: 70px;
             }
 
-            .plate-object {
-                font-size: 18px;
-            }
-
             .scale-pole {
                 height: 130px;
                 width: 8px;
@@ -554,6 +558,11 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             .plate-left::after, .plate-right::after {
                 height: 22px;
                 top: -22px;
+            }
+
+            .plate-dot {
+                width: 10px;
+                height: 10px;
             }
         }
     </style>
@@ -569,7 +578,7 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
                 محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.
             </p>
 
-            <!-- ترازوی عدالت تعاملی با اشیاء -->
+            <!-- ترازوی عدالت تمیز و منطبق با تم -->
             <div class="justice-scale-container" id="scaleContainer">
                 <div class="justice-scale" id="justiceScale">
                     <div class="scale-ornament"></div>
@@ -578,10 +587,10 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
                         <span class="chain-right"></span>
                     </div>
                     <div class="plate-left" id="plateLeft">
-                        <span class="plate-object">⚖️</span>
+                        <div class="plate-dot"></div>
                     </div>
                     <div class="plate-right" id="plateRight">
-                        <span class="plate-object">📜</span>
+                        <div class="plate-dot"></div>
                     </div>
                     <div class="scale-pole"></div>
                     <div class="scale-base"></div>
@@ -636,27 +645,15 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             const scaleBeam = document.getElementById('scaleBeam');
             const plateLeft = document.getElementById('plateLeft');
             const plateRight = document.getElementById('plateRight');
-            const scaleContainer = document.getElementById('scaleContainer');
-            const leftObject = plateLeft.querySelector('.plate-object');
-            const rightObject = plateRight.querySelector('.plate-object');
-
-            const objects = ['⚖️', '📜', '🔨', '🏛️', '📋', '💼', '🛡️', '⚡', '🔑', '📝'];
 
             function pullLeft() {
-                // Reset
+                // Reset right side
                 scaleBeam.classList.remove('pulled-right');
                 plateRight.classList.remove('pulled');
                 
                 // Pull left
                 scaleBeam.classList.add('pulled-left');
                 plateLeft.classList.add('pulled');
-                
-                // Change object with animation
-                leftObject.style.transform = 'scale(0) rotate(180deg)';
-                setTimeout(() => {
-                    leftObject.textContent = objects[Math.floor(Math.random() * objects.length)];
-                    leftObject.style.transform = 'scale(1) rotate(0deg)';
-                }, 250);
                 
                 // Reset after delay
                 setTimeout(() => {
@@ -666,20 +663,13 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
             }
 
             function pullRight() {
-                // Reset
+                // Reset left side
                 scaleBeam.classList.remove('pulled-left');
                 plateLeft.classList.remove('pulled');
                 
                 // Pull right
                 scaleBeam.classList.add('pulled-right');
                 plateRight.classList.add('pulled');
-                
-                // Change object with animation
-                rightObject.style.transform = 'scale(0) rotate(-180deg)';
-                setTimeout(() => {
-                    rightObject.textContent = objects[Math.floor(Math.random() * objects.length)];
-                    rightObject.style.transform = 'scale(1) rotate(0deg)';
-                }, 250);
                 
                 // Reset after delay
                 setTimeout(() => {
@@ -720,4 +710,3 @@ Here is the enhanced HTML code with improved mobile compatibility, theme-integra
 </body>
 
 </html>
-```
