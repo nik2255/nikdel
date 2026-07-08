@@ -39,12 +39,14 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
+    padding:20px;
     transition:.3s;
 }
 
 .container{
     width:900px;
-    height:600px;
+    max-width:100%;
+    min-height:600px;
     background:var(--card);
     border-radius:18px;
     overflow:hidden;
@@ -55,6 +57,7 @@ body{
 
 .sidebar{
     width:270px;
+    flex-shrink:0;
     background:var(--card);
     border-left:1px solid var(--border);
 }
@@ -65,6 +68,7 @@ body{
     padding:35px 20px;
     border-bottom:1px solid var(--border);
     color:var(--text);
+    line-height:1.6;
 }
 
 .menu{
@@ -79,7 +83,7 @@ body{
     display:block;
     text-decoration:none;
     color:var(--text);
-    padding:22px;
+    padding:20px;
     transition:.25s;
     font-size:18px;
 }
@@ -107,8 +111,6 @@ body{
 }
 
 
-/* Dark Mode Button */
-
 .theme-switch{
     margin:25px;
     padding:12px;
@@ -120,21 +122,83 @@ body{
     font-family:"Vazirmatn";
     font-size:16px;
     width:calc(100% - 50px);
-    transition:.3s;
 }
 
-.theme-switch:hover{
-    background:#111;
-    color:white;
+
+/* Mobile compatibility */
+
+@media(max-width:768px){
+
+    body{
+        padding:10px;
+    }
+
+    .container{
+        flex-direction:column;
+        min-height:auto;
+        width:100%;
+    }
+
+
+    .sidebar{
+        width:100%;
+        border-left:none;
+        border-bottom:1px solid var(--border);
+    }
+
+
+    .logo{
+        font-size:30px;
+        padding:25px 15px;
+    }
+
+
+    .menu a{
+        font-size:16px;
+        padding:16px;
+    }
+
+
+    .content{
+        padding:30px 20px;
+        text-align:right;
+    }
+
+
+    .content h1{
+        font-size:30px;
+    }
+
+
+    .content p{
+        font-size:15px;
+    }
+
+}
+
+
+@media(max-width:400px){
+
+    .logo{
+        font-size:25px;
+    }
+
+    .content h1{
+        font-size:26px;
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <div class="content">
 
@@ -147,11 +211,14 @@ body{
 </div>
 
 
+
 <div class="sidebar">
+
 
 <div class="logo">
 ابراهیم نیکدل مقدم
 </div>
+
 
 
 <ul class="menu">
@@ -167,6 +234,7 @@ body{
 </ul>
 
 
+
 <button class="theme-switch" onclick="toggleTheme()">
 🌙 حالت تاریک
 </button>
@@ -174,7 +242,9 @@ body{
 
 </div>
 
+
 </div>
+
 
 
 <script>
@@ -186,15 +256,21 @@ document.body.classList.toggle("dark");
 let button=document.querySelector(".theme-switch");
 
 if(document.body.classList.contains("dark")){
-    button.innerHTML="☀️ حالت روشن";
-    localStorage.setItem("theme","dark");
+
+button.innerHTML="☀️ حالت روشن";
+localStorage.setItem("theme","dark");
+
 }
+
 else{
-    button.innerHTML="🌙 حالت تاریک";
-    localStorage.setItem("theme","light");
+
+button.innerHTML="🌙 حالت تاریک";
+localStorage.setItem("theme","light");
+
 }
 
 }
+
 
 
 window.onload=function(){
