@@ -17,39 +17,49 @@
     box-sizing:border-box;
 }
 
+
 :root{
+
     --background:#f3f4f6;
     --card:#ffffff;
     --text:#111111;
     --secondary:#666666;
     --border:#dddddd;
+
 }
 
+
+
 .dark{
+
     --background:#101010;
     --card:#1c1c1c;
     --text:#f5f5f5;
     --secondary:#aaaaaa;
     --border:#333333;
+
 }
+
 
 
 body{
+
     background:var(--background);
+
     font-family:"Vazirmatn",sans-serif;
+
     min-height:100vh;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     padding:30px;
-}
 
+    transition:background .35s ease;
 
-/* prevents animation during theme switch */
-
-.no-transition,
-.no-transition *{
-    transition:none !important;
 }
 
 
@@ -57,7 +67,9 @@ body{
 .container{
 
     width:1000px;
+
     max-width:100%;
+
     min-height:620px;
 
     background:var(--card);
@@ -70,6 +82,12 @@ body{
 
     box-shadow:0 20px 50px rgba(0,0,0,.12);
 
+    transition:
+
+    background .35s ease,
+
+    box-shadow .35s ease;
+
 }
 
 
@@ -81,6 +99,12 @@ body{
     background:var(--card);
 
     border-left:1px solid var(--border);
+
+    transition:
+
+    background .35s ease,
+
+    border-color .35s ease;
 
 }
 
@@ -102,6 +126,12 @@ body{
 
     border-bottom:1px solid var(--border);
 
+    transition:
+
+    color .35s ease,
+
+    border-color .35s ease;
+
 }
 
 
@@ -117,6 +147,8 @@ body{
 .menu li{
 
     border-bottom:1px solid var(--border);
+
+    transition:border-color .35s ease;
 
 }
 
@@ -134,6 +166,14 @@ body{
 
     font-size:18px;
 
+    transition:
+
+    background .25s ease,
+
+    color .25s ease,
+
+    padding-right .25s ease;
+
 }
 
 
@@ -143,6 +183,8 @@ body{
     background:var(--text);
 
     color:var(--card);
+
+    padding-right:35px;
 
 }
 
@@ -166,6 +208,8 @@ body{
 
     margin-bottom:25px;
 
+    transition:color .35s ease;
+
 }
 
 
@@ -177,6 +221,8 @@ body{
     line-height:2.2;
 
     font-size:18px;
+
+    transition:color .35s ease;
 
 }
 
@@ -215,6 +261,24 @@ body{
 
     font-size:16px;
 
+    transition:
+
+    background .35s ease,
+
+    color .35s ease,
+
+    border-color .35s ease;
+
+}
+
+
+
+.theme-switch:hover{
+
+    background:var(--text);
+
+    color:var(--card);
+
 }
 
 
@@ -236,15 +300,32 @@ body{
 
 
 
+.scale-top,
+.beam,
+.left-chain,
+.right-chain,
+.plate,
+.plate div,
+.pole,
+.base{
+
+    background:var(--text);
+
+    transition:background .35s ease;
+
+}
+
+
+
 .scale-top{
 
     width:14px;
 
     height:30px;
 
-    background:var(--text);
-
     margin:auto;
+
+    border-radius:10px;
 
 }
 
@@ -262,7 +343,7 @@ body{
 
     height:9px;
 
-    background:var(--text);
+    border-radius:10px;
 
 }
 
@@ -275,23 +356,28 @@ body{
 
     top:10px;
 
-    height:75px;
-
     width:2px;
 
-    background:var(--text);
+    height:75px;
 
 }
+
 
 
 .left-chain{
+
     left:35px;
+
 }
+
 
 
 .right-chain{
+
     right:35px;
+
 }
+
 
 
 .plate{
@@ -304,33 +390,38 @@ body{
 
     height:12px;
 
-    background:var(--text);
+    border-radius:50%;
 
 }
 
 
 
 .left-plate{
+
     left:25px;
+
 }
+
 
 
 .right-plate{
+
     right:25px;
+
 }
+
 
 
 .plate div{
 
-    height:40px;
-
     width:2px;
 
-    background:var(--text);
+    height:40px;
 
     margin:auto;
 
 }
+
 
 
 .pole{
@@ -347,7 +438,7 @@ body{
 
     height:155px;
 
-    background:var(--text);
+    border-radius:10px;
 
 }
 
@@ -367,7 +458,7 @@ body{
 
     height:16px;
 
-    background:var(--text);
+    border-radius:10px;
 
 }
 
@@ -377,6 +468,7 @@ body{
 
 
 @media(max-width:768px){
+
 
 .container{
 
@@ -394,6 +486,13 @@ body{
 }
 
 
+.logo{
+
+    font-size:34px;
+
+}
+
+
 .content{
 
     padding:35px 25px;
@@ -401,13 +500,36 @@ body{
 }
 
 
+.content h1{
+
+    font-size:32px;
+
+}
+
+
+}
+
+
+
+@media(max-width:400px){
+
+
 .logo{
 
-    font-size:34px;
+    font-size:28px;
 
 }
 
+
+.justice-scale{
+
+    transform:scale(.8);
+
 }
+
+
+}
+
 
 
 </style>
@@ -423,16 +545,21 @@ body{
 
 <div class="content">
 
+
 <h1>خوش آمدید</h1>
+
 
 <p>
 محتوای صفحه اینجا قرار می‌گیرد.
 </p>
 
 
+
 <div class="justice-scale">
 
+
 <div class="scale-top"></div>
+
 
 <div class="beam">
 
@@ -443,17 +570,25 @@ body{
 </div>
 
 
+
 <div class="plate left-plate">
+
 <div></div>
+
 </div>
+
 
 
 <div class="plate right-plate">
+
 <div></div>
+
 </div>
 
 
+
 <div class="pole"></div>
+
 
 <div class="base"></div>
 
@@ -465,34 +600,65 @@ body{
 
 
 
+
 <div class="sidebar">
 
 
 <div class="logo">
+
 ابراهیم نیکدل مقدم
+
 </div>
+
 
 
 <ul class="menu">
 
-<li><a href="#">وکیل پایه یک دادگستری</a></li>
 
-<li><a href="#">مقالات</a></li>
+<li>
+<a href="#">
+وکیل پایه یک دادگستری
+</a>
+</li>
 
-<li><a href="#">مباحث حقوقی</a></li>
 
-<li><a href="#">تماس با ما</a></li>
+<li>
+<a href="#">
+مقالات
+</a>
+</li>
+
+
+<li>
+<a href="#">
+مباحث حقوقی
+</a>
+</li>
+
+
+<li>
+<a href="#">
+تماس با ما
+</a>
+</li>
+
 
 </ul>
 
 
+
 <div class="theme-container">
 
+
 <button class="theme-switch" onclick="toggleTheme()">
+
 🌙 حالت تاریک
+
 </button>
 
+
 </div>
+
 
 
 </div>
@@ -507,12 +673,12 @@ body{
 
 function toggleTheme(){
 
-document.documentElement.classList.add("no-transition");
 
 document.body.classList.toggle("dark");
 
 
 let button=document.querySelector(".theme-switch");
+
 
 
 if(document.body.classList.contains("dark")){
@@ -521,22 +687,18 @@ button.innerHTML="☀️ حالت روشن";
 
 localStorage.setItem("theme","dark");
 
+
 }
 
 else{
+
 
 button.innerHTML="🌙 حالت تاریک";
 
 localStorage.setItem("theme","light");
 
+
 }
-
-
-setTimeout(()=>{
-
-document.documentElement.classList.remove("no-transition");
-
-},50);
 
 
 }
@@ -548,14 +710,18 @@ window.onload=function(){
 
 if(localStorage.getItem("theme")=="dark"){
 
+
 document.body.classList.add("dark");
+
 
 document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
 
+
 }
 
 
 }
+
 
 
 </script>
