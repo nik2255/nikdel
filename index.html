@@ -58,7 +58,8 @@
             --info-secondary: #CCCCCC;
         }
 
-        html, body {
+        html,
+        body {
             overflow-x: hidden;
             width: 100%;
             height: 100%;
@@ -87,7 +88,7 @@
             height: 100%;
             pointer-events: none;
             z-index: 1000;
-            background: 
+            background:
                 radial-gradient(ellipse at 0% 0%, var(--vignette-color) 0%, transparent 25%),
                 radial-gradient(ellipse at 100% 0%, var(--vignette-color) 0%, transparent 25%),
                 radial-gradient(ellipse at 0% 100%, var(--vignette-color) 0%, transparent 25%),
@@ -112,7 +113,7 @@
             border-radius: 22px;
             overflow: hidden;
             display: flex;
-            box-shadow: 0 20px 50px rgba(0,0,0,.12);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
             transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
@@ -122,7 +123,7 @@
             background: var(--info-bg);
             border-radius: 22px;
             border: 2px solid var(--info-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
             color: var(--info-text);
             overflow: hidden;
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
@@ -138,7 +139,7 @@
         }
 
         .contact-header:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .contact-header-title {
@@ -248,7 +249,7 @@
             background: var(--info-bg);
             border-radius: 22px;
             border: 2px solid var(--info-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
             color: var(--info-text);
             overflow: hidden;
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
@@ -264,7 +265,7 @@
         }
 
         .info-header:hover {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .info-header-title {
@@ -408,10 +409,10 @@
 
         .background-poem.glowing {
             opacity: 0.25;
-            text-shadow: 
-                0 0 12px rgba(135,206,235,0.9),
-                0 0 28px rgba(135,206,235,0.5),
-                0 0 45px rgba(128,128,0,0.5);
+            text-shadow:
+                0 0 12px rgba(135, 206, 235, 0.9),
+                0 0 28px rgba(135, 206, 235, 0.5),
+                0 0 45px rgba(128, 128, 0, 0.5);
         }
 
         .justice-scale {
@@ -496,26 +497,30 @@
             transform: rotate(8deg);
         }
 
-        .chain-left, .chain-right {
+        .chain-left,
+        .chain-right {
             position: absolute;
             top: 12px;
             width: 3px;
             height: 80px;
-            background: repeating-linear-gradient(
-                to bottom,
-                var(--scale-accent) 0px,
-                var(--scale-accent) 4px,
-                var(--scale-light) 4px,
-                var(--scale-light) 8px
-            );
+            background: repeating-linear-gradient(to bottom,
+                    var(--scale-accent) 0px,
+                    var(--scale-accent) 4px,
+                    var(--scale-light) 4px,
+                    var(--scale-light) 8px);
             border-radius: 1px;
             transition: background 0.5s ease;
         }
 
-        .chain-left { left: 30px; }
-        .chain-right { right: 30px; }
+        .chain-left {
+            left: 30px;
+        }
+        .chain-right {
+            right: 30px;
+        }
 
-        .plate-left, .plate-right {
+        .plate-left,
+        .plate-right {
             position: absolute;
             top: 92px;
             width: 85px;
@@ -523,20 +528,30 @@
             background: linear-gradient(180deg, var(--plate-bg) 0%, var(--card) 100%);
             border: 3px solid var(--plate-border);
             border-radius: 0 0 12px 12px;
-            box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255,255,255,0.05);
+            box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
-        .plate-left { left: 7px; }
-        .plate-right { right: 7px; }
-        .plate-left.pulled { transform: translateY(15px); }
-        .plate-right.pulled { transform: translateY(15px); }
+        .plate-left {
+            left: 7px;
+        }
+        .plate-right {
+            right: 7px;
+        }
+        .plate-left.pulled {
+            transform: translateY(15px);
+        }
+        .plate-right.pulled {
+            transform: translateY(15px);
+        }
 
-        .plate-left::before, .plate-right::before,
-        .plate-left::after, .plate-right::after {
+        .plate-left::before,
+        .plate-right::before,
+        .plate-left::after,
+        .plate-right::after {
             content: '';
             position: absolute;
             top: -28px;
@@ -546,10 +561,18 @@
             transition: background 0.5s ease;
         }
 
-        .plate-left::before { left: 10px; }
-        .plate-left::after { right: 10px; }
-        .plate-right::before { left: 10px; }
-        .plate-right::after { right: 10px; }
+        .plate-left::before {
+            left: 10px;
+        }
+        .plate-left::after {
+            right: 10px;
+        }
+        .plate-right::before {
+            left: 10px;
+        }
+        .plate-right::after {
+            right: 10px;
+        }
 
         .feather-container {
             position: relative;
@@ -666,72 +689,253 @@
         }
 
         @media(max-width:768px) {
-            body { padding: 8px; }
-            .main-wrapper { gap: 20px; }
-            .container { flex-direction: column; border-radius: 16px; min-height: auto; }
-            .contact-header { padding: 20px; }
-            .contact-header-title { font-size: 20px; }
-            .contact-inner { padding: 0 20px 25px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 20px; }
-            .contact-item { padding: 15px; }
-            .contact-label { font-size: 14px; }
-            .contact-value { font-size: 16px; }
-            .info-header { padding: 15px 20px; }
-            .info-header-title { font-size: 18px; }
-            .info-inner { padding: 0 20px 20px; }
-            .info-text { font-size: 14px; }
-            .sidebar { width: 100%; min-width: 100%; border-left: none; border-bottom: 2px solid var(--border); }
-            .logo { font-size: 30px; padding: 25px 15px; }
-            .content { padding: 25px 18px; }
-            .content h1 { font-size: 26px; margin-bottom: 10px; }
-            .content p { font-size: 13px; line-height: 1.9; }
-            .scale-wrapper { width: 250px; height: 280px; }
-            .background-poem { font-size: 12px; line-height: 2.3; width: 220px; }
-            .justice-scale { width: 200px; height: 260px; }
-            .scale-beam { width: 170px; left: 15px; top: 35px; }
-            .chain-left { left: 25px; }
-            .chain-right { right: 25px; }
-            .chain-left, .chain-right { height: 65px; }
-            .plate-left, .plate-right { width: 70px; height: 45px; top: 78px; }
-            .plate-left { left: 7px; }
-            .plate-right { right: 7px; }
-            .feather-container { width: 30px; height: 26px; }
-            .feather-shaft { height: 26px; }
-            .feather-vane-left, .feather-vane-right { width: 12px; height: 18px; }
-            .heart-container { width: 22px; height: 22px; }
-            .heart-shape { width: 22px; height: 22px; }
-            .heart-shape::before, .heart-shape::after { width: 12px; height: 18px; border-radius: 12px 12px 0 0; }
-            .scale-base { width: 130px; }
-            .scale-base::after { width: 70px; }
-            .scale-pole { height: 160px; }
-            .theme-container { padding: 18px; }
-            .scale-hint { font-size: 11px; margin-top: 8px; }
+            body {
+                padding: 8px;
+            }
+            .main-wrapper {
+                gap: 20px;
+            }
+            .container {
+                flex-direction: column;
+                border-radius: 16px;
+                min-height: auto;
+            }
+            .contact-header {
+                padding: 20px;
+            }
+            .contact-header-title {
+                font-size: 20px;
+            }
+            .contact-inner {
+                padding: 0 20px 25px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .contact-item {
+                padding: 15px;
+            }
+            .contact-label {
+                font-size: 14px;
+            }
+            .contact-value {
+                font-size: 16px;
+            }
+            .info-header {
+                padding: 15px 20px;
+            }
+            .info-header-title {
+                font-size: 18px;
+            }
+            .info-inner {
+                padding: 0 20px 20px;
+            }
+            .info-text {
+                font-size: 14px;
+            }
+            .sidebar {
+                width: 100%;
+                min-width: 100%;
+                border-left: none;
+                border-bottom: 2px solid var(--border);
+            }
+            .logo {
+                font-size: 30px;
+                padding: 25px 15px;
+            }
+            .content {
+                padding: 25px 18px;
+            }
+            .content h1 {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+            .content p {
+                font-size: 13px;
+                line-height: 1.9;
+            }
+            .scale-wrapper {
+                width: 250px;
+                height: 280px;
+            }
+            .background-poem {
+                font-size: 12px;
+                line-height: 2.3;
+                width: 220px;
+            }
+            .justice-scale {
+                width: 200px;
+                height: 260px;
+            }
+            .scale-beam {
+                width: 170px;
+                left: 15px;
+                top: 35px;
+            }
+            .chain-left {
+                left: 25px;
+            }
+            .chain-right {
+                right: 25px;
+            }
+            .chain-left,
+            .chain-right {
+                height: 65px;
+            }
+            .plate-left,
+            .plate-right {
+                width: 70px;
+                height: 45px;
+                top: 78px;
+            }
+            .plate-left {
+                left: 7px;
+            }
+            .plate-right {
+                right: 7px;
+            }
+            .feather-container {
+                width: 30px;
+                height: 26px;
+            }
+            .feather-shaft {
+                height: 26px;
+            }
+            .feather-vane-left,
+            .feather-vane-right {
+                width: 12px;
+                height: 18px;
+            }
+            .heart-container {
+                width: 22px;
+                height: 22px;
+            }
+            .heart-shape {
+                width: 22px;
+                height: 22px;
+            }
+            .heart-shape::before,
+            .heart-shape::after {
+                width: 12px;
+                height: 18px;
+                border-radius: 12px 12px 0 0;
+            }
+            .scale-base {
+                width: 130px;
+            }
+            .scale-base::after {
+                width: 70px;
+            }
+            .scale-pole {
+                height: 160px;
+            }
+            .theme-container {
+                padding: 18px;
+            }
+            .scale-hint {
+                font-size: 11px;
+                margin-top: 8px;
+            }
         }
 
         @media(max-width:380px) {
-            .content { padding: 18px 10px; }
-            .scale-wrapper { width: 200px; height: 240px; }
-            .background-poem { font-size: 10px; line-height: 2.1; width: 170px; }
-            .justice-scale { width: 160px; height: 220px; }
-            .scale-beam { width: 130px; left: 15px; height: 10px; top: 30px; }
-            .chain-left, .chain-right { height: 55px; top: 10px; }
-            .chain-left { left: 20px; }
-            .chain-right { right: 20px; }
-            .plate-left, .plate-right { width: 58px; height: 36px; top: 67px; }
-            .plate-left { left: 6px; }
-            .plate-right { right: 6px; }
-            .feather-container { width: 24px; height: 20px; }
-            .feather-shaft { height: 20px; width: 1.5px; }
-            .feather-vane-left, .feather-vane-right { width: 10px; height: 14px; }
-            .heart-container { width: 18px; height: 18px; }
-            .heart-shape { width: 18px; height: 18px; }
-            .heart-shape::before, .heart-shape::after { width: 10px; height: 14px; border-radius: 10px 10px 0 0; }
-            .scale-pole { height: 140px; width: 8px; }
-            .scale-ornament { width: 20px; height: 20px; top: 0; }
-            .plate-left::before, .plate-right::before,
-            .plate-left::after, .plate-right::after { height: 20px; top: -20px; }
-            .scale-base { width: 110px; height: 12px; }
-            .scale-base::after { width: 60px; height: 6px; }
+            .content {
+                padding: 18px 10px;
+            }
+            .scale-wrapper {
+                width: 200px;
+                height: 240px;
+            }
+            .background-poem {
+                font-size: 10px;
+                line-height: 2.1;
+                width: 170px;
+            }
+            .justice-scale {
+                width: 160px;
+                height: 220px;
+            }
+            .scale-beam {
+                width: 130px;
+                left: 15px;
+                height: 10px;
+                top: 30px;
+            }
+            .chain-left,
+            .chain-right {
+                height: 55px;
+                top: 10px;
+            }
+            .chain-left {
+                left: 20px;
+            }
+            .chain-right {
+                right: 20px;
+            }
+            .plate-left,
+            .plate-right {
+                width: 58px;
+                height: 36px;
+                top: 67px;
+            }
+            .plate-left {
+                left: 6px;
+            }
+            .plate-right {
+                right: 6px;
+            }
+            .feather-container {
+                width: 24px;
+                height: 20px;
+            }
+            .feather-shaft {
+                height: 20px;
+                width: 1.5px;
+            }
+            .feather-vane-left,
+            .feather-vane-right {
+                width: 10px;
+                height: 14px;
+            }
+            .heart-container {
+                width: 18px;
+                height: 18px;
+            }
+            .heart-shape {
+                width: 18px;
+                height: 18px;
+            }
+            .heart-shape::before,
+            .heart-shape::after {
+                width: 10px;
+                height: 14px;
+                border-radius: 10px 10px 0 0;
+            }
+            .scale-pole {
+                height: 140px;
+                width: 8px;
+            }
+            .scale-ornament {
+                width: 20px;
+                height: 20px;
+                top: 0;
+            }
+            .plate-left::before,
+            .plate-right::before,
+            .plate-left::after,
+            .plate-right::after {
+                height: 20px;
+                top: -20px;
+            }
+            .scale-base {
+                width: 110px;
+                height: 12px;
+            }
+            .scale-base::after {
+                width: 60px;
+                height: 6px;
+            }
         }
     </style>
 </head>
@@ -741,38 +945,6 @@
         <div class="container">
             <div class="content">
                 <h1>خوش آمدید</h1>
-                <p>محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.</p>
-
-                <div class="scale-wrapper">
-                    <div class="background-poem" id="backgroundPoem">بنی‌آدم اعضای یکدیگرند
-که در آفرینش ز یک گوهرند
-چو عضوی به درد آورد روزگار
-دگر عضوها را نماند قرار
-تو کز محنت دیگران بی‌غمی
-نشاید که نامت نهند آدمی</div>
-                    <div class="justice-scale" id="justiceScale">
-                        <div class="scale-ornament"></div>
-                        <div class="scale-beam" id="scaleBeam">
-                            <span class="chain-left"></span>
-                            <span class="chain-right"></span>
-                        </div>
-                        <div class="plate-left" id="plateLeft">
-                            <div class="feather-container">
-                                <div class="feather-shaft"></div>
-                                <div class="feather-vane-left"></div>
-                                <div class="feather-vane-right"></div>
-                            </div>
-                        </div>
-                        <div class="plate-right" id="plateRight">
-                            <div class="heart-container">
-                                <div class="heart-shape"></div>
-                            </div>
-                        </div>
-                        <div class="scale-pole"></div>
-                        <div class="scale-base"></div>
-                    </div>
-                </div>
-                <p class="scale-hint">روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
             </div>
 
             <div class="sidebar">
@@ -867,18 +1039,10 @@
         (function() {
             const body = document.body;
             const themeBtn = document.getElementById('themeBtn');
-            const scaleBeam = document.getElementById('scaleBeam');
-            const plateLeft = document.getElementById('plateLeft');
-            const plateRight = document.getElementById('plateRight');
-            const backgroundPoem = document.getElementById('backgroundPoem');
             const contactSection = document.getElementById('contactSection');
             const contactHeader = document.getElementById('contactHeader');
             const infoSection = document.getElementById('infoSection');
             const infoHeader = document.getElementById('infoHeader');
-
-            let glowTimer = null;
-            let leftTimer = null;
-            let rightTimer = null;
 
             function toggleTheme() {
                 body.classList.toggle('dark');
@@ -901,62 +1065,6 @@
             infoHeader.addEventListener('click', function() {
                 infoSection.classList.toggle('open');
             });
-
-            function glow() {
-                if (glowTimer) clearTimeout(glowTimer);
-                backgroundPoem.classList.add('glowing');
-                glowTimer = setTimeout(function() {
-                    backgroundPoem.classList.remove('glowing');
-                    glowTimer = null;
-                }, 1200);
-            }
-
-            function resetAll() {
-                if (leftTimer) { clearTimeout(leftTimer); leftTimer = null; }
-                if (rightTimer) { clearTimeout(rightTimer); rightTimer = null; }
-                scaleBeam.classList.remove('pulled-left', 'pulled-right');
-                plateLeft.classList.remove('pulled');
-                plateRight.classList.remove('pulled');
-            }
-
-            function pullLeft() {
-                resetAll();
-                scaleBeam.classList.add('pulled-left');
-                plateLeft.classList.add('pulled');
-                glow();
-                leftTimer = setTimeout(function() {
-                    scaleBeam.classList.remove('pulled-left');
-                    plateLeft.classList.remove('pulled');
-                    leftTimer = null;
-                }, 600);
-            }
-
-            function pullRight() {
-                resetAll();
-                scaleBeam.classList.add('pulled-right');
-                plateRight.classList.add('pulled');
-                glow();
-                rightTimer = setTimeout(function() {
-                    scaleBeam.classList.remove('pulled-right');
-                    plateRight.classList.remove('pulled');
-                    rightTimer = null;
-                }, 600);
-            }
-
-            plateLeft.addEventListener('pointerdown', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                pullLeft();
-            });
-
-            plateRight.addEventListener('pointerdown', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                pullRight();
-            });
-
-            plateLeft.addEventListener('touchstart', function(e) { e.preventDefault(); });
-            plateRight.addEventListener('touchstart', function(e) { e.preventDefault(); });
         })();
     </script>
 </body>
