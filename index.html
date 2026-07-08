@@ -945,6 +945,37 @@
         <div class="container">
             <div class="content">
                 <h1>خوش آمدید</h1>
+
+                <div class="scale-wrapper">
+                    <div class="background-poem" id="backgroundPoem">بنی‌آدم اعضای یکدیگرند
+که در آفرینش ز یک گوهرند
+چو عضوی به درد آورد روزگار
+دگر عضوها را نماند قرار
+تو کز محنت دیگران بی‌غمی
+نشاید که نامت نهند آدمی</div>
+                    <div class="justice-scale" id="justiceScale">
+                        <div class="scale-ornament"></div>
+                        <div class="scale-beam" id="scaleBeam">
+                            <span class="chain-left"></span>
+                            <span class="chain-right"></span>
+                        </div>
+                        <div class="plate-left" id="plateLeft">
+                            <div class="feather-container">
+                                <div class="feather-shaft"></div>
+                                <div class="feather-vane-left"></div>
+                                <div class="feather-vane-right"></div>
+                            </div>
+                        </div>
+                        <div class="plate-right" id="plateRight">
+                            <div class="heart-container">
+                                <div class="heart-shape"></div>
+                            </div>
+                        </div>
+                        <div class="scale-pole"></div>
+                        <div class="scale-base"></div>
+                    </div>
+                </div>
+                <p class="scale-hint">روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
             </div>
 
             <div class="sidebar">
@@ -1039,10 +1070,18 @@
         (function() {
             const body = document.body;
             const themeBtn = document.getElementById('themeBtn');
+            const scaleBeam = document.getElementById('scaleBeam');
+            const plateLeft = document.getElementById('plateLeft');
+            const plateRight = document.getElementById('plateRight');
+            const backgroundPoem = document.getElementById('backgroundPoem');
             const contactSection = document.getElementById('contactSection');
             const contactHeader = document.getElementById('contactHeader');
             const infoSection = document.getElementById('infoSection');
             const infoHeader = document.getElementById('infoHeader');
+
+            let glowTimer = null;
+            let leftTimer = null;
+            let rightTimer = null;
 
             function toggleTheme() {
                 body.classList.toggle('dark');
@@ -1065,6 +1104,64 @@
             infoHeader.addEventListener('click', function() {
                 infoSection.classList.toggle('open');
             });
+
+            function glow() {
+                if (glowTimer) clearTimeout(glowTimer);
+                backgroundPoem.classList.add('glowing');
+                glowTimer = setTimeout(function() {
+                    backgroundPoem.classList.remove('glowing');
+                    glowTimer = null;
+                }, 1200);
+            }
+
+            function resetAll() {
+                if (leftTimer) { clearTimeout(leftTimer);
+                    leftTimer = null; }
+                if (rightTimer) { clearTimeout(rightTimer);
+                    rightTimer = null; }
+                scaleBeam.classList.remove('pulled-left', 'pulled-right');
+                plateLeft.classList.remove('pulled');
+                plateRight.classList.remove('pulled');
+            }
+
+            function pullLeft() {
+                resetAll();
+                scaleBeam.classList.add('pulled-left');
+                plateLeft.classList.add('pulled');
+                glow();
+                leftTimer = setTimeout(function() {
+                    scaleBeam.classList.remove('pulled-left');
+                    plateLeft.classList.remove('pulled');
+                    leftTimer = null;
+                }, 600);
+            }
+
+            function pullRight() {
+                resetAll();
+                scaleBeam.classList.add('pulled-right');
+                plateRight.classList.add('pulled');
+                glow();
+                rightTimer = setTimeout(function() {
+                    scaleBeam.classList.remove('pulled-right');
+                    plateRight.classList.remove('pulled');
+                    rightTimer = null;
+                }, 600);
+            }
+
+            plateLeft.addEventListener('pointerdown', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                pullLeft();
+            });
+
+            plateRight.addEventListener('pointerdown', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                pullRight();
+            });
+
+            plateLeft.addEventListener('touchstart', function(e) { e.preventDefault(); });
+            plateRight.addEventListener('touchstart', function(e) { e.preventDefault(); });
         })();
     </script>
 </body>
