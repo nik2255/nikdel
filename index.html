@@ -19,6 +19,9 @@
             --text: #111;
             --secondary: #666;
             --border: #ddd;
+            --scale-base: #4a4a4a;
+            --scale-accent: #b8860b;
+            --scale-light: #e0c87c;
         }
 
         .dark {
@@ -27,6 +30,9 @@
             --text: #f5f5f5;
             --secondary: #aaa;
             --border: #333;
+            --scale-base: #d4af37;
+            --scale-accent: #f0d060;
+            --scale-light: #f9e076;
         }
 
         body {
@@ -108,93 +114,184 @@
             line-height: 2.2;
         }
 
-        /* Justice scale */
+        /* Polished Justice Scale */
+        .justice-scale-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
         .justice-scale {
             position: relative;
-            width: 280px;
-            height: 240px;
-            margin: 50px auto 0;
+            width: 240px;
+            height: 260px;
         }
 
-        .scale-top,
-        .beam,
-        .left-chain,
-        .right-chain,
-        .plate,
-        .plate div,
-        .pole,
-        .base {
-            background: var(--text);
-            transition: .35s;
-        }
-
-        .scale-top {
-            width: 14px;
-            height: 30px;
-            margin: auto;
-        }
-
-        .beam {
+        /* Base platform */
+        .scale-base {
             position: absolute;
-            top: 30px;
-            left: 40px;
-            width: 200px;
-            height: 9px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 14px;
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
-        .left-chain,
-        .right-chain {
+        .scale-base::after {
+            content: '';
             position: absolute;
-            top: 10px;
-            height: 75px;
-            width: 2px;
-        }
-
-        .left-chain {
-            left: 35px;
-        }
-
-        .right-chain {
-            right: 35px;
-        }
-
-        .plate {
-            position: absolute;
-            top: 105px;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 90px;
-            height: 12px;
+            height: 8px;
+            background: linear-gradient(to bottom, var(--scale-light), var(--scale-accent));
+            border-radius: 3px;
         }
 
-        .left-plate {
-            left: 25px;
+        /* Vertical pole */
+        .scale-pole {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 170px;
+            background: linear-gradient(to right, var(--scale-base), var(--scale-accent), var(--scale-base));
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .right-plate {
-            right: 25px;
+        .scale-pole::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--scale-accent), var(--scale-base));
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        .plate div {
-            height: 40px;
-            width: 2px;
-            margin: auto;
+        /* Top ornament */
+        .scale-ornament {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, var(--scale-light), var(--scale-accent));
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            z-index: 2;
         }
 
-        .pole {
+        .scale-ornament::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, var(--scale-light), var(--scale-accent));
+            border-radius: 50%;
+        }
+
+        /* Beam */
+        .scale-beam {
             position: absolute;
             top: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 155px;
+            left: 15px;
+            width: 210px;
+            height: 12px;
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            transform-origin: center center;
+            animation: subtleSwing 6s ease-in-out infinite;
         }
 
-        .base {
+        @keyframes subtleSwing {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1.5deg); }
+            75% { transform: rotate(-1.5deg); }
+        }
+
+        /* Chains */
+        .chain-left, .chain-right {
             position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 16px;
+            top: 12px;
+            width: 2px;
+            height: 70px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--scale-accent) 0px,
+                var(--scale-accent) 4px,
+                var(--scale-light) 4px,
+                var(--scale-light) 8px
+            );
+            border-radius: 1px;
+        }
+
+        .chain-left {
+            left: 30px;
+        }
+
+        .chain-right {
+            right: 30px;
+        }
+
+        /* Hanging plates */
+        .plate-left, .plate-right {
+            position: absolute;
+            top: 82px;
+            width: 80px;
+            height: 10px;
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+        }
+
+        .plate-left {
+            left: 12px;
+        }
+
+        .plate-right {
+            right: 12px;
+        }
+
+        /* Plate strings */
+        .plate-left::before, .plate-right::before,
+        .plate-left::after, .plate-right::after {
+            content: '';
+            position: absolute;
+            top: -25px;
+            width: 2px;
+            height: 25px;
+            background: var(--scale-accent);
+        }
+
+        .plate-left::before {
+            left: 8px;
+        }
+
+        .plate-left::after {
+            right: 8px;
+        }
+
+        .plate-right::before {
+            left: 8px;
+        }
+
+        .plate-right::after {
+            right: 8px;
         }
 
         /* button */
@@ -211,6 +308,14 @@
             background: var(--card);
             color: var(--text);
             cursor: pointer;
+            font-family: "Vazirmatn", sans-serif;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .theme-switch:hover {
+            background: var(--text);
+            color: var(--card);
         }
 
         @media(max-width:768px) {
@@ -230,6 +335,10 @@
             .logo {
                 font-size: 34px;
             }
+
+            .justice-scale {
+                transform: scale(0.85);
+            }
         }
     </style>
 </head>
@@ -244,21 +353,19 @@
                 محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.
             </p>
 
-            <!-- ترازوی عدالت همچنان به عنوان المان بصری باقی مانده است -->
-            <div class="justice-scale">
-                <div class="scale-top"></div>
-                <div class="beam">
-                    <span class="left-chain"></span>
-                    <span class="right-chain"></span>
+            <!-- ترازوی عدالت با طراحی جدید و باکیفیت -->
+            <div class="justice-scale-container">
+                <div class="justice-scale">
+                    <div class="scale-ornament"></div>
+                    <div class="scale-beam">
+                        <span class="chain-left"></span>
+                        <span class="chain-right"></span>
+                    </div>
+                    <div class="plate-left"></div>
+                    <div class="plate-right"></div>
+                    <div class="scale-pole"></div>
+                    <div class="scale-base"></div>
                 </div>
-                <div class="plate left-plate">
-                    <div></div>
-                </div>
-                <div class="plate right-plate">
-                    <div></div>
-                </div>
-                <div class="pole"></div>
-                <div class="base"></div>
             </div>
         </div>
 
@@ -268,7 +375,6 @@
             </div>
             <ul class="menu">
                 <li><a href="#">وکیل پایه یک دادگستری</a></li>
-                <!-- لینک مقالات اکنون به یک صفحه خالی (about:blank) هدایت می‌شود -->
                 <li><a href="about:blank" target="_blank">مقالات</a></li>
                 <li><a href="#">مباحث حقوقی</a></li>
                 <li><a href="#">تماس با ما</a></li>
