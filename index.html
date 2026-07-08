@@ -484,13 +484,11 @@ cursor:pointer;
 
 @media(max-width:768px){
 
-
 .container{
 
 flex-direction:column;
 
 }
-
 
 .sidebar{
 
@@ -500,13 +498,11 @@ border-left:none;
 
 }
 
-
 .content{
 
 padding:35px 25px;
 
 }
-
 
 .logo{
 
@@ -514,45 +510,33 @@ font-size:34px;
 
 }
 
-
 }
 
 </style>
 
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
-
 <div class="content">
-
 
 <h1>
 خوش آمدید
 </h1>
 
-
 <p>
 محتوای صفحه اینجا قرار می‌گیرد.
 </p>
 
-
-
 <div class="case-box">
-
 
 <h2>
 ورود به پرونده
 </h2>
 
-
 <input id="caseCode" placeholder="کد پرونده را وارد کنید">
-
 
 <button onclick="login()">
 
@@ -560,19 +544,13 @@ font-size:34px;
 
 </button>
 
-
 <p id="error"></p>
-
 
 </div>
 
-
-
 <div class="justice-scale">
 
-
 <div class="scale-top"></div>
-
 
 <div class="beam">
 
@@ -582,29 +560,19 @@ font-size:34px;
 
 </div>
 
-
 <div class="plate left-plate"><div></div></div>
-
 
 <div class="plate right-plate"><div></div></div>
 
-
 <div class="pole"></div>
-
 
 <div class="base"></div>
 
-
 </div>
 
-
 </div>
-
-
-
 
 <div class="sidebar">
-
 
 <div class="logo">
 
@@ -612,12 +580,11 @@ font-size:34px;
 
 </div>
 
-
 <ul class="menu">
 
 <li><a href="#">وکیل پایه یک دادگستری</a></li>
 
-<li><a href="#">مقالات</a></li>
+<li><a href="articles.html">مقالات</a></li>
 
 <li><a href="#">مباحث حقوقی</a></li>
 
@@ -626,7 +593,6 @@ font-size:34px;
 <li><a href="#case">ورود به پرونده</a></li>
 
 </ul>
-
 
 <div class="theme-container">
 
@@ -638,16 +604,11 @@ font-size:34px;
 
 </div>
 
-
 </div>
 
-
 </div>
-
-
 
 <script>
-
 
 const cases={
 
@@ -659,42 +620,29 @@ const cases={
 
 };
 
-
-
 function login(){
-
 
 let code=document.getElementById("caseCode").value.trim();
 
-
 if(cases[code]){
 
-
 window.location.href=cases[code];
-
 
 }
 
 else{
 
-
 document.getElementById("error").innerHTML="کد پرونده اشتباه است";
 
 }
 
-
 }
-
-
 
 function toggleTheme(){
 
-
 document.body.classList.toggle("dark");
 
-
 let button=document.querySelector(".theme-switch");
-
 
 if(document.body.classList.contains("dark")){
 
@@ -712,13 +660,9 @@ localStorage.setItem("theme","light");
 
 }
 
-
 }
 
-
-
 window.onload=function(){
-
 
 if(localStorage.getItem("theme")=="dark"){
 
@@ -728,12 +672,9 @@ document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
 
 }
 
-
 }
 
-
 </script>
-
 
 </body>
 
