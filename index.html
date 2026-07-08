@@ -64,6 +64,7 @@ body{
 .logo{
     font-family:"Noto Nastaliq Urdu",serif;
     font-size:38px;
+    font-weight:600;
     text-align:center;
     padding:35px 20px;
     border-bottom:1px solid var(--border);
@@ -111,12 +112,94 @@ body{
 }
 
 
-.law-image{
-    width:100%;
-    max-width:420px;
-    margin-top:35px;
-    border-radius:15px;
-    display:block;
+/* CSS Justice Scale */
+
+.justice-scale{
+    position:relative;
+    width:260px;
+    height:220px;
+    margin:40px auto 0;
+}
+
+.scale-top{
+    width:12px;
+    height:25px;
+    background:var(--text);
+    margin:auto;
+    border-radius:5px;
+}
+
+.beam{
+    position:absolute;
+    top:25px;
+    left:30px;
+    width:200px;
+    height:8px;
+    background:var(--text);
+    border-radius:10px;
+}
+
+.left-chain,
+.right-chain{
+    position:absolute;
+    top:8px;
+    width:2px;
+    height:70px;
+    background:var(--text);
+}
+
+.left-chain{
+    left:35px;
+}
+
+.right-chain{
+    right:35px;
+}
+
+.plate{
+    position:absolute;
+    top:95px;
+    width:90px;
+    height:10px;
+    background:var(--text);
+    border-radius:50%;
+}
+
+.left-plate{
+    left:20px;
+}
+
+.right-plate{
+    right:20px;
+}
+
+.plate div{
+    width:2px;
+    height:35px;
+    background:var(--text);
+    margin:auto;
+}
+
+.pole{
+    position:absolute;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+    width:10px;
+    height:140px;
+    background:var(--text);
+    border-radius:10px;
+}
+
+.base{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:130px;
+    height:15px;
+    background:var(--text);
+    border-radius:10px;
 }
 
 
@@ -161,8 +244,8 @@ body{
     font-size:30px;
 }
 
-.law-image{
-    max-width:100%;
+.justice-scale{
+    transform:scale(.85);
 }
 
 }
@@ -199,9 +282,28 @@ body{
 </p>
 
 
-<img class="law-image" 
-src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Scales_of_justice.svg/512px-Scales_of_justice.svg.png"
-alt="ترازو عدالت">
+<div class="justice-scale">
+
+<div class="scale-top"></div>
+
+<div class="beam">
+<span class="left-chain"></span>
+<span class="right-chain"></span>
+</div>
+
+<div class="plate left-plate">
+<div></div>
+</div>
+
+<div class="plate right-plate">
+<div></div>
+</div>
+
+<div class="pole"></div>
+
+<div class="base"></div>
+
+</div>
 
 
 </div>
