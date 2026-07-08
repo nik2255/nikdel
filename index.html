@@ -63,6 +63,7 @@
             padding: 15px;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
+            transition: background 0.5s ease;
         }
 
         .container {
@@ -74,6 +75,7 @@
             overflow: hidden;
             display: flex;
             box-shadow: 0 20px 50px rgba(0,0,0,.12);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .sidebar {
@@ -84,6 +86,7 @@
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            transition: background 0.5s ease, border-color 0.5s ease;
         }
 
         .logo {
@@ -94,6 +97,7 @@
             padding: 35px 20px;
             line-height: 2;
             border-bottom: 1px solid var(--border);
+            transition: color 0.5s ease, border-color 0.5s ease;
         }
 
         .menu {
@@ -103,6 +107,7 @@
 
         .menu li {
             border-bottom: 1px solid var(--border);
+            transition: border-color 0.5s ease;
         }
 
         .menu a {
@@ -111,6 +116,7 @@
             color: var(--text);
             padding: 20px 25px;
             font-size: 18px;
+            transition: all 0.3s ease;
         }
 
         .menu a:hover {
@@ -129,6 +135,7 @@
             overflow: hidden;
             min-width: 0;
             position: relative;
+            transition: background 0.5s ease;
         }
 
         .content h1 {
@@ -136,6 +143,7 @@
             font-size: 36px;
             margin-bottom: 16px;
             text-align: center;
+            transition: color 0.5s ease;
         }
 
         .content p {
@@ -143,6 +151,7 @@
             line-height: 2.2;
             text-align: center;
             max-width: 500px;
+            transition: color 0.5s ease;
         }
 
         /* Wrapper */
@@ -172,7 +181,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 280px;
-            transition: text-shadow 0.3s ease, opacity 0.3s ease;
+            transition: text-shadow 0.3s ease, opacity 0.5s ease, color 0.5s ease;
         }
 
         .background-poem.glowing {
@@ -202,6 +211,7 @@
             background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 6px var(--scale-shadow);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .scale-base::after {
@@ -214,6 +224,7 @@
             height: 8px;
             background: linear-gradient(to bottom, var(--scale-light), var(--scale-accent));
             border-radius: 3px;
+            transition: background 0.5s ease;
         }
 
         .scale-pole {
@@ -226,6 +237,7 @@
             background: linear-gradient(to right, var(--scale-main), var(--scale-accent), var(--scale-main));
             border-radius: 3px;
             box-shadow: 0 2px 4px var(--scale-shadow);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .scale-ornament {
@@ -239,6 +251,7 @@
             border-radius: 50%;
             box-shadow: 0 3px 6px var(--scale-shadow);
             z-index: 2;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .scale-beam {
@@ -251,6 +264,7 @@
             border-radius: 4px;
             box-shadow: 0 4px 8px var(--scale-shadow);
             transform-origin: center center;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .scale-beam.pulled-left {
@@ -274,6 +288,7 @@
                 var(--scale-light) 8px
             );
             border-radius: 1px;
+            transition: background 0.5s ease;
         }
 
         .chain-left { left: 30px; }
@@ -291,6 +306,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
+                        background 0.5s ease, 
+                        border-color 0.5s ease, 
+                        box-shadow 0.5s ease;
         }
 
         .plate-left { left: 7px; }
@@ -306,6 +325,7 @@
             width: 2px;
             height: 28px;
             background: var(--scale-accent);
+            transition: background 0.5s ease;
         }
 
         .plate-left::before { left: 10px; }
@@ -329,6 +349,7 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: 0;
+            transition: background 0.5s ease;
         }
 
         .feather-vane-left,
@@ -340,6 +361,7 @@
             bottom: 2px;
             border-radius: 0 0 2px 2px;
             opacity: 0.85;
+            transition: background 0.5s ease;
         }
 
         .feather-vane-left {
@@ -376,6 +398,7 @@
             height: 24px;
             border-radius: 16px 16px 0 0;
             background: var(--heart-color);
+            transition: background 0.5s ease;
         }
 
         .heart-shape::before {
@@ -397,11 +420,13 @@
             margin-top: 12px;
             opacity: 0.8;
             z-index: 1;
+            transition: color 0.5s ease;
         }
 
         .theme-container {
             padding: 25px;
             border-top: 1px solid var(--border);
+            transition: border-color 0.5s ease;
         }
 
         .theme-switch {
@@ -414,6 +439,7 @@
             cursor: pointer;
             font-family: "Vazirmatn", sans-serif;
             font-size: 15px;
+            transition: all 0.4s ease;
         }
 
         .theme-switch:hover {
@@ -546,7 +572,6 @@
             let glowTimer = null;
             let leftTimer = null;
             let rightTimer = null;
-            let isAnimating = false;
 
             function toggleTheme() {
                 body.classList.toggle('dark');
@@ -581,6 +606,8 @@
 
             function pullLeft() {
                 resetAll();
+                // Force a reflow to ensure animation replays
+                void scaleBeam.offsetWidth;
                 scaleBeam.classList.add('pulled-left');
                 plateLeft.classList.add('pulled');
                 glow();
@@ -593,6 +620,8 @@
 
             function pullRight() {
                 resetAll();
+                // Force a reflow to ensure animation replays
+                void scaleBeam.offsetWidth;
                 scaleBeam.classList.add('pulled-right');
                 plateRight.classList.add('pulled');
                 glow();
@@ -615,7 +644,20 @@
                 pullRight();
             });
 
-            // Prevent zoom
+            // Also add click as fallback
+            plateLeft.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                pullLeft();
+            });
+
+            plateRight.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                pullRight();
+            });
+
+            // Prevent zoom on touch
             plateLeft.addEventListener('touchstart', function(e) { e.preventDefault(); });
             plateRight.addEventListener('touchstart', function(e) { e.preventDefault(); });
         })();
