@@ -10,50 +10,61 @@
 
 <style>
 
-@font-face{
-    font-family:"JameelNoori";
-    src:url("https://cdn.jsdelivr.net/gh/tariq-abdullah/urdu-web-font-CDN/JameelNooriNastaleeq.woff") format("woff");
-}
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+:root{
+    --background:#f4f6f9;
+    --card:white;
+    --text:#111;
+    --secondary:#666;
+    --border:#e5e5e5;
+}
+
+.dark{
+    --background:#121212;
+    --card:#1e1e1e;
+    --text:#f5f5f5;
+    --secondary:#aaa;
+    --border:#333;
+}
+
 body{
-    background:#f4f6f9;
+    background:var(--background);
     font-family:"Vazirmatn",sans-serif;
     display:flex;
     justify-content:center;
     align-items:center;
     min-height:100vh;
+    transition:.3s;
 }
 
 .container{
     width:900px;
     height:600px;
-    background:white;
+    background:var(--card);
     border-radius:18px;
     overflow:hidden;
     display:flex;
     box-shadow:0 15px 40px rgba(0,0,0,.15);
+    transition:.3s;
 }
 
 .sidebar{
     width:270px;
-    background:white;
-    border-left:1px solid #e5e5e5;
+    background:var(--card);
+    border-left:1px solid var(--border);
 }
 
 .logo{
-    font-family:"JameelNoori",serif;
     font-size:38px;
     text-align:center;
     padding:35px 20px;
-    border-bottom:1px solid #ececec;
-    line-height:1.8;
-    color:#111;
+    border-bottom:1px solid var(--border);
+    color:var(--text);
 }
 
 .menu{
@@ -61,13 +72,13 @@ body{
 }
 
 .menu li{
-    border-bottom:1px solid #ececec;
+    border-bottom:1px solid var(--border);
 }
 
 .menu a{
     display:block;
     text-decoration:none;
-    color:#222;
+    color:var(--text);
     padding:22px;
     transition:.25s;
     font-size:18px;
@@ -85,16 +96,40 @@ body{
 }
 
 .content h1{
+    color:var(--text);
     font-size:38px;
     margin-bottom:20px;
 }
 
 .content p{
-    color:#666;
+    color:var(--secondary);
     line-height:2;
 }
 
+
+/* Dark Mode Button */
+
+.theme-switch{
+    margin:25px;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    font-family:"Vazirmatn";
+    font-size:16px;
+    width:calc(100% - 50px);
+    transition:.3s;
+}
+
+.theme-switch:hover{
+    background:#111;
+    color:white;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -111,11 +146,13 @@ body{
 
 </div>
 
+
 <div class="sidebar">
 
 <div class="logo">
 ابراهیم نیکدل مقدم
 </div>
+
 
 <ul class="menu">
 
@@ -129,9 +166,51 @@ body{
 
 </ul>
 
+
+<button class="theme-switch" onclick="toggleTheme()">
+🌙 حالت تاریک
+</button>
+
+
 </div>
 
 </div>
+
+
+<script>
+
+function toggleTheme(){
+
+document.body.classList.toggle("dark");
+
+let button=document.querySelector(".theme-switch");
+
+if(document.body.classList.contains("dark")){
+    button.innerHTML="☀️ حالت روشن";
+    localStorage.setItem("theme","dark");
+}
+else{
+    button.innerHTML="🌙 حالت تاریک";
+    localStorage.setItem("theme","light");
+}
+
+}
+
+
+window.onload=function(){
+
+if(localStorage.getItem("theme")=="dark"){
+
+document.body.classList.add("dark");
+
+document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
+
+}
+
+}
+
+</script>
+
 
 </body>
 </html>
