@@ -61,7 +61,7 @@
             font-weight: 700;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             padding: 15px;
             -webkit-tap-highlight-color: transparent;
@@ -86,18 +86,84 @@
             transition: background 0.5s ease;
         }
 
-        .container {
+        .main-wrapper {
             width: 1000px;
             max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            width: 100%;
             min-height: 620px;
             background: var(--card);
             border-radius: 22px;
             overflow: hidden;
             display: flex;
             box-shadow: 0 20px 50px rgba(0,0,0,.12);
-            position: relative;
-            z-index: 1;
             transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .contact-section {
+            width: 100%;
+            background: var(--card);
+            border-radius: 22px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            border: 2px solid var(--border);
+            transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .contact-title {
+            color: var(--text);
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: color 0.5s ease;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--text);
+            color: var(--card);
+        }
+
+        .contact-label {
+            color: var(--secondary);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: color 0.5s ease;
+        }
+
+        .contact-value {
+            color: var(--secondary);
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0.9;
+            transition: color 0.5s ease;
+        }
+
+        .contact-item:hover .contact-label,
+        .contact-item:hover .contact-value {
+            color: var(--card);
         }
 
         .sidebar {
@@ -475,8 +541,15 @@
 
         /* Mobile */
         @media(max-width:768px) {
-            body { padding: 8px; align-items: flex-start; }
+            body { padding: 8px; }
+            .main-wrapper { gap: 20px; }
             .container { flex-direction: column; border-radius: 16px; min-height: auto; }
+            .contact-section { padding: 30px 20px; border-radius: 16px; }
+            .contact-title { font-size: 24px; margin-bottom: 25px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+            .contact-item { padding: 15px; }
+            .contact-label { font-size: 14px; }
+            .contact-value { font-size: 16px; }
             .sidebar { width: 100%; min-width: 100%; border-left: none; border-bottom: 2px solid var(--border); }
             .logo { font-size: 30px; padding: 25px 15px; }
             .menu a { padding: 16px 20px; font-size: 16px; font-weight: 700; }
@@ -535,53 +608,77 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>خوش آمدید</h1>
-            <p>محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.</p>
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="content">
+                <h1>خوش آمدید</h1>
+                <p>محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.</p>
 
-            <div class="scale-wrapper">
-                <div class="background-poem" id="backgroundPoem">بنی‌آدم اعضای یکدیگرند
+                <div class="scale-wrapper">
+                    <div class="background-poem" id="backgroundPoem">بنی‌آدم اعضای یکدیگرند
 که در آفرینش ز یک گوهرند
 چو عضوی به درد آورد روزگار
 دگر عضوها را نماند قرار
 تو کز محنت دیگران بی‌غمی
 نشاید که نامت نهند آدمی</div>
-                <div class="justice-scale" id="justiceScale">
-                    <div class="scale-ornament"></div>
-                    <div class="scale-beam" id="scaleBeam">
-                        <span class="chain-left"></span>
-                        <span class="chain-right"></span>
-                    </div>
-                    <div class="plate-left" id="plateLeft">
-                        <div class="feather-container">
-                            <div class="feather-shaft"></div>
-                            <div class="feather-vane-left"></div>
-                            <div class="feather-vane-right"></div>
+                    <div class="justice-scale" id="justiceScale">
+                        <div class="scale-ornament"></div>
+                        <div class="scale-beam" id="scaleBeam">
+                            <span class="chain-left"></span>
+                            <span class="chain-right"></span>
                         </div>
-                    </div>
-                    <div class="plate-right" id="plateRight">
-                        <div class="heart-container">
-                            <div class="heart-shape"></div>
+                        <div class="plate-left" id="plateLeft">
+                            <div class="feather-container">
+                                <div class="feather-shaft"></div>
+                                <div class="feather-vane-left"></div>
+                                <div class="feather-vane-right"></div>
+                            </div>
                         </div>
+                        <div class="plate-right" id="plateRight">
+                            <div class="heart-container">
+                                <div class="heart-shape"></div>
+                            </div>
+                        </div>
+                        <div class="scale-pole"></div>
+                        <div class="scale-base"></div>
                     </div>
-                    <div class="scale-pole"></div>
-                    <div class="scale-base"></div>
+                </div>
+                <p class="scale-hint">روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
+            </div>
+
+            <div class="sidebar">
+                <div class="logo">ابراهیم نیکدل مقدم</div>
+                <ul class="menu">
+                    <li><a href="#">وکیل پایه یک دادگستری</a></li>
+                    <li><a href="about:blank" target="_blank">مقالات</a></li>
+                    <li><a href="#">مباحث حقوقی</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+                <div class="theme-container">
+                    <button class="theme-switch" id="themeBtn">حالت تاریک</button>
                 </div>
             </div>
-            <p class="scale-hint">روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
         </div>
 
-        <div class="sidebar">
-            <div class="logo">ابراهیم نیکدل مقدم</div>
-            <ul class="menu">
-                <li><a href="#">وکیل پایه یک دادگستری</a></li>
-                <li><a href="about:blank" target="_blank">مقالات</a></li>
-                <li><a href="#">مباحث حقوقی</a></li>
-                <li><a href="#">تماس با ما</a></li>
-            </ul>
-            <div class="theme-container">
-                <button class="theme-switch" id="themeBtn">حالت تاریک</button>
+        <div class="contact-section">
+            <h2 class="contact-title">اطلاعات تماس</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">تلفن</div>
+                    <div class="contact-value">۰۲۱-۱۲۳۴۵۶۷۸</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">ایمیل</div>
+                    <div class="contact-value">info@example.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">آدرس</div>
+                    <div class="contact-value">تهران، خیابان ولیعصر</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">ساعات کاری</div>
+                    <div class="contact-value">شنبه تا چهارشنبه ۹ صبح تا ۵ عصر</div>
+                </div>
             </div>
         </div>
     </div>
