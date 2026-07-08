@@ -6,7 +6,7 @@
 
 <title>ابراهیم نیکدل مقدم</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,255 +17,472 @@
 }
 
 :root{
-    --background:#f4f6f9;
-    --card:white;
-    --text:#111;
-    --secondary:#666;
-    --border:#e5e5e5;
+    --background:#f3f4f6;
+    --card:#ffffff;
+    --text:#111111;
+    --secondary:#666666;
+    --border:#dddddd;
+    --hover:#111111;
 }
 
 .dark{
-    --background:#121212;
-    --card:#1e1e1e;
+    --background:#101010;
+    --card:#1c1c1c;
     --text:#f5f5f5;
-    --secondary:#aaa;
-    --border:#333;
+    --secondary:#aaaaaa;
+    --border:#333333;
+    --hover:#ffffff;
 }
+
 
 body{
     background:var(--background);
     font-family:"Vazirmatn",sans-serif;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
-    padding:20px;
+    padding:30px;
     transition:.3s;
 }
 
+
 .container{
-    width:900px;
+
+    width:1000px;
     max-width:100%;
-    min-height:600px;
+    min-height:620px;
+
     background:var(--card);
-    border-radius:18px;
+
+    border-radius:22px;
+
     overflow:hidden;
+
     display:flex;
-    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.12);
+
+    transition:.3s;
+
 }
+
+
+/* Sidebar */
 
 .sidebar{
-    width:270px;
-    flex-shrink:0;
+
+    width:300px;
+
     background:var(--card);
+
     border-left:1px solid var(--border);
+
 }
+
 
 .logo{
+
     font-family:"Noto Nastaliq Urdu",serif;
-    font-size:38px;
-    font-weight:600;
+
+    font-size:42px;
+
     text-align:center;
-    padding:35px 20px;
-    border-bottom:1px solid var(--border);
+
     color:var(--text);
+
+    padding:40px 20px;
+
     line-height:2;
+
+    border-bottom:1px solid var(--border);
+
 }
+
+
+
+/* Menu */
 
 .menu{
+
     list-style:none;
+
 }
+
 
 .menu li{
+
     border-bottom:1px solid var(--border);
+
 }
+
 
 .menu a{
-    display:block;
+
+    display:flex;
+
+    align-items:center;
+
     text-decoration:none;
+
     color:var(--text);
-    padding:20px;
+
+    padding:22px 25px;
+
     font-size:18px;
+
     transition:.25s;
+
 }
+
 
 .menu a:hover{
-    background:#111;
-    color:white;
+
+    background:var(--hover);
+
+    color:var(--card);
+
     padding-right:35px;
-}
 
-.content{
-    flex:1;
-    padding:60px;
-}
-
-.content h1{
-    color:var(--text);
-    font-size:38px;
-    margin-bottom:20px;
-}
-
-.content p{
-    color:var(--secondary);
-    line-height:2;
 }
 
 
-/* CSS Justice Scale */
+/* Theme button */
 
-.justice-scale{
-    position:relative;
-    width:260px;
-    height:220px;
-    margin:40px auto 0;
-}
 
-.scale-top{
-    width:12px;
-    height:25px;
-    background:var(--text);
-    margin:auto;
-    border-radius:5px;
-}
+.theme-container{
 
-.beam{
-    position:absolute;
-    top:25px;
-    left:30px;
-    width:200px;
-    height:8px;
-    background:var(--text);
-    border-radius:10px;
-}
+    padding:25px;
 
-.left-chain,
-.right-chain{
-    position:absolute;
-    top:8px;
-    width:2px;
-    height:70px;
-    background:var(--text);
-}
+    border-top:1px solid var(--border);
 
-.left-chain{
-    left:35px;
-}
-
-.right-chain{
-    right:35px;
-}
-
-.plate{
-    position:absolute;
-    top:95px;
-    width:90px;
-    height:10px;
-    background:var(--text);
-    border-radius:50%;
-}
-
-.left-plate{
-    left:20px;
-}
-
-.right-plate{
-    right:20px;
-}
-
-.plate div{
-    width:2px;
-    height:35px;
-    background:var(--text);
-    margin:auto;
-}
-
-.pole{
-    position:absolute;
-    top:30px;
-    left:50%;
-    transform:translateX(-50%);
-    width:10px;
-    height:140px;
-    background:var(--text);
-    border-radius:10px;
-}
-
-.base{
-    position:absolute;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:130px;
-    height:15px;
-    background:var(--text);
-    border-radius:10px;
 }
 
 
 .theme-switch{
-    margin:25px;
-    padding:12px;
-    width:calc(100% - 50px);
-    border-radius:10px;
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
     border:1px solid var(--border);
-    background:var(--card);
+
+    background:transparent;
+
     color:var(--text);
-    cursor:pointer;
+
     font-family:"Vazirmatn";
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
 }
 
+
 .theme-switch:hover{
-    background:#111;
-    color:white;
+
+    background:var(--hover);
+
+    color:var(--card);
+
 }
+
+
+
+/* Content */
+
+
+.content{
+
+    flex:1;
+
+    padding:70px;
+
+}
+
+
+.content h1{
+
+    color:var(--text);
+
+    font-size:42px;
+
+    margin-bottom:25px;
+
+}
+
+
+.content p{
+
+    color:var(--secondary);
+
+    line-height:2.2;
+
+    font-size:18px;
+
+}
+
+
+
+/* Justice scale */
+
+
+.justice-scale{
+
+    position:relative;
+
+    width:280px;
+
+    height:240px;
+
+    margin:50px auto 0;
+
+}
+
+
+
+.scale-top{
+
+    width:14px;
+
+    height:30px;
+
+    background:var(--text);
+
+    margin:auto;
+
+    border-radius:10px;
+
+}
+
+
+
+.beam{
+
+    position:absolute;
+
+    top:30px;
+
+    left:40px;
+
+    width:200px;
+
+    height:9px;
+
+    background:var(--text);
+
+    border-radius:10px;
+
+}
+
+
+
+.left-chain,
+.right-chain{
+
+    position:absolute;
+
+    top:10px;
+
+    width:2px;
+
+    height:75px;
+
+    background:var(--text);
+
+}
+
+
+
+.left-chain{
+
+    left:35px;
+
+}
+
+
+.right-chain{
+
+    right:35px;
+
+}
+
+
+
+.plate{
+
+    position:absolute;
+
+    top:105px;
+
+    width:90px;
+
+    height:12px;
+
+    background:var(--text);
+
+    border-radius:50%;
+
+}
+
+
+
+.left-plate{
+
+    left:25px;
+
+}
+
+
+
+.right-plate{
+
+    right:25px;
+
+}
+
+
+
+.plate div{
+
+    height:40px;
+
+    width:2px;
+
+    background:var(--text);
+
+    margin:auto;
+
+}
+
+
+
+.pole{
+
+    position:absolute;
+
+    top:35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:12px;
+
+    height:155px;
+
+    background:var(--text);
+
+    border-radius:10px;
+
+}
+
+
+
+.base{
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:150px;
+
+    height:16px;
+
+    background:var(--text);
+
+    border-radius:10px;
+
+}
+
+
+
+/* Mobile */
 
 
 @media(max-width:768px){
 
-.container{
-    flex-direction:column;
+    body{
+
+        padding:15px;
+
+    }
+
+
+    .container{
+
+        flex-direction:column;
+
+    }
+
+
+    .sidebar{
+
+        width:100%;
+
+        border-left:none;
+
+    }
+
+
+    .logo{
+
+        font-size:34px;
+
+    }
+
+
+    .content{
+
+        padding:35px 25px;
+
+    }
+
+
+    .content h1{
+
+        font-size:32px;
+
+    }
+
+
 }
 
-.sidebar{
-    width:100%;
-    border-left:none;
-}
-
-.logo{
-    font-size:30px;
-}
-
-.content{
-    padding:30px 20px;
-}
-
-.content h1{
-    font-size:30px;
-}
-
-.justice-scale{
-    transform:scale(.85);
-}
-
-}
 
 
 @media(max-width:400px){
 
-.logo{
-    font-size:25px;
-}
 
-.content h1{
-    font-size:26px;
-}
+    .logo{
+
+        font-size:28px;
+
+    }
+
+
+    .justice-scale{
+
+        transform:scale(.8);
+
+    }
+
 
 }
 
 </style>
 
 </head>
+
 
 <body>
 
@@ -275,35 +492,55 @@ body{
 
 <div class="content">
 
+
 <h1>خوش آمدید</h1>
+
 
 <p>
 محتوای صفحه اینجا قرار می‌گیرد.
 </p>
 
 
+
 <div class="justice-scale">
 
 <div class="scale-top"></div>
 
+
 <div class="beam">
+
 <span class="left-chain"></span>
+
 <span class="right-chain"></span>
+
 </div>
+
+
 
 <div class="plate left-plate">
+
 <div></div>
+
 </div>
 
+
+
 <div class="plate right-plate">
+
 <div></div>
+
 </div>
+
+
 
 <div class="pole"></div>
 
+
 <div class="base"></div>
 
+
 </div>
+
 
 
 </div>
@@ -314,26 +551,60 @@ body{
 
 
 <div class="logo">
+
 ابراهیم نیکدل مقدم
+
 </div>
+
 
 
 <ul class="menu">
 
-<li><a href="#">وکیل پایه یک دادگستری</a></li>
 
-<li><a href="#">مقالات</a></li>
+<li>
+<a href="#">
+وکیل پایه یک دادگستری
+</a>
+</li>
 
-<li><a href="#">مباحث حقوقی</a></li>
 
-<li><a href="#">تماس با ما</a></li>
+<li>
+<a href="#">
+مقالات
+</a>
+</li>
+
+
+<li>
+<a href="#">
+مباحث حقوقی
+</a>
+</li>
+
+
+<li>
+<a href="#">
+تماس با ما
+</a>
+</li>
+
 
 </ul>
 
 
+
+<div class="theme-container">
+
+
 <button class="theme-switch" onclick="toggleTheme()">
+
 🌙 حالت تاریک
+
 </button>
+
+
+</div>
+
 
 
 </div>
@@ -345,40 +616,58 @@ body{
 
 <script>
 
+
 function toggleTheme(){
+
 
 document.body.classList.toggle("dark");
 
+
 let button=document.querySelector(".theme-switch");
+
+
 
 if(document.body.classList.contains("dark")){
 
+
 button.innerHTML="☀️ حالت روشن";
+
 localStorage.setItem("theme","dark");
+
 
 }
 
 else{
 
+
 button.innerHTML="🌙 حالت تاریک";
+
 localStorage.setItem("theme","light");
 
-}
 
 }
+
+
+}
+
 
 
 window.onload=function(){
 
+
 if(localStorage.getItem("theme")=="dark"){
+
 
 document.body.classList.add("dark");
 
 document.querySelector(".theme-switch").innerHTML="☀️ حالت روشن";
 
-}
 
 }
+
+
+}
+
 
 </script>
 
