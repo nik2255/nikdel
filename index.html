@@ -14,36 +14,36 @@
         }
 
         :root {
-            --bg: #ffffff;
-            --card: #ffffff;
-            --text: #000000;
-            --secondary: #000000;
-            --border: #000000;
-            --scale-main: #000000;
-            --scale-accent: #000000;
+            --bg: #F5F0EB;
+            --card: #F5F0EB;
+            --text: #2C2C2C;
+            --secondary: #2C2C2C;
+            --border: #2C2C2C;
+            --scale-main: #2C2C2C;
+            --scale-accent: #2C2C2C;
             --scale-light: #666666;
             --scale-shadow: rgba(0,0,0,0.2);
-            --plate-bg: #ffffff;
-            --plate-border: #000000;
-            --feather-color: #000000;
-            --heart-color: #000000;
+            --plate-bg: #F5F0EB;
+            --plate-border: #2C2C2C;
+            --feather-color: #2C2C2C;
+            --heart-color: #2C2C2C;
             --poem-opacity: 0.05;
         }
 
         .dark {
-            --bg: #000000;
-            --card: #000000;
-            --text: #ffffff;
-            --secondary: #ffffff;
-            --border: #ffffff;
-            --scale-main: #ffffff;
-            --scale-accent: #ffffff;
-            --scale-light: #cccccc;
-            --scale-shadow: rgba(255,255,255,0.2);
-            --plate-bg: #000000;
-            --plate-border: #ffffff;
-            --feather-color: #ffffff;
-            --heart-color: #ffffff;
+            --bg: #2C2C2C;
+            --card: #2C2C2C;
+            --text: #F5F0EB;
+            --secondary: #F5F0EB;
+            --border: #F5F0EB;
+            --scale-main: #F5F0EB;
+            --scale-accent: #F5F0EB;
+            --scale-light: #CCCCCC;
+            --scale-shadow: rgba(245,240,235,0.2);
+            --plate-bg: #2C2C2C;
+            --plate-border: #F5F0EB;
+            --feather-color: #F5F0EB;
+            --heart-color: #F5F0EB;
             --poem-opacity: 0.07;
         }
 
@@ -214,7 +214,7 @@
             transform: translateX(-50%);
             width: 160px;
             height: 14px;
-            background: var(--scale-main);
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 6px var(--scale-shadow);
             transition: background 0.5s ease, box-shadow 0.5s ease;
@@ -228,7 +228,7 @@
             transform: translateX(-50%);
             width: 90px;
             height: 8px;
-            background: var(--scale-accent);
+            background: linear-gradient(to bottom, var(--scale-light), var(--scale-accent));
             border-radius: 3px;
             transition: background 0.5s ease;
         }
@@ -240,7 +240,7 @@
             transform: translateX(-50%);
             width: 10px;
             height: 190px;
-            background: var(--scale-main);
+            background: linear-gradient(to right, var(--scale-main), var(--scale-accent), var(--scale-main));
             border-radius: 3px;
             box-shadow: 0 2px 4px var(--scale-shadow);
             transition: background 0.5s ease, box-shadow 0.5s ease;
@@ -253,7 +253,7 @@
             transform: translateX(-50%);
             width: 24px;
             height: 24px;
-            background: var(--scale-main);
+            background: radial-gradient(circle, var(--scale-light), var(--scale-accent));
             border-radius: 50%;
             box-shadow: 0 3px 6px var(--scale-shadow);
             z-index: 2;
@@ -266,11 +266,11 @@
             left: 15px;
             width: 210px;
             height: 12px;
-            background: var(--scale-main);
+            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 8px var(--scale-shadow);
             transform-origin: center center;
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.5s ease, box-shadow 0.5s ease;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
         .scale-beam.pulled-left {
@@ -305,17 +305,14 @@
             top: 92px;
             width: 85px;
             height: 55px;
-            background: var(--plate-bg);
+            background: linear-gradient(180deg, var(--plate-bg) 0%, var(--card) 100%);
             border: 3px solid var(--plate-border);
             border-radius: 0 0 12px 12px;
             box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), 
-                        background 0.5s ease, 
-                        border-color 0.5s ease, 
-                        box-shadow 0.5s ease;
+            transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
         .plate-left { left: 7px; }
@@ -366,7 +363,7 @@
             background: var(--feather-color);
             bottom: 2px;
             border-radius: 0 0 2px 2px;
-            opacity: 1;
+            opacity: 0.85;
             transition: background 0.5s ease;
         }
 
@@ -614,7 +611,6 @@
 
             function pullLeft() {
                 resetAll();
-                void scaleBeam.offsetWidth;
                 scaleBeam.classList.add('pulled-left');
                 plateLeft.classList.add('pulled');
                 glow();
@@ -627,7 +623,6 @@
 
             function pullRight() {
                 resetAll();
-                void scaleBeam.offsetWidth;
                 scaleBeam.classList.add('pulled-right');
                 plateRight.classList.add('pulled');
                 glow();
@@ -645,18 +640,6 @@
             });
 
             plateRight.addEventListener('pointerdown', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                pullRight();
-            });
-
-            plateLeft.addEventListener('click', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                pullLeft();
-            });
-
-            plateRight.addEventListener('click', function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 pullRight();
