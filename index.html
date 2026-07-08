@@ -115,24 +115,68 @@
             transition: background 0.5s ease, box-shadow 0.5s ease;
         }
 
+        /* Contact Section */
         .contact-section {
             width: 100%;
             background: var(--info-bg);
             border-radius: 22px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
             border: 2px solid var(--info-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
             color: var(--info-text);
+            overflow: hidden;
             transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
 
-        .contact-title {
+        .contact-header {
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-header:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .contact-header-title {
             color: var(--info-text);
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 30px;
             transition: color 0.5s ease;
+        }
+
+        .contact-toggle {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--info-text);
+            color: var(--info-bg);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            transition: transform 0.4s ease, background 0.5s ease, color 0.5s ease;
+        }
+
+        .contact-section.open .contact-toggle {
+            transform: rotate(180deg);
+        }
+
+        .contact-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .contact-section.open .contact-content {
+            max-height: 500px;
+        }
+
+        .contact-inner {
+            padding: 0 40px 30px;
         }
 
         .contact-grid {
@@ -228,7 +272,7 @@
         .info-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
+            transition: max-height 0.5s ease;
         }
 
         .info-section.open .info-content {
@@ -633,8 +677,9 @@
             body { padding: 8px; }
             .main-wrapper { gap: 20px; }
             .container { flex-direction: column; border-radius: 16px; min-height: auto; }
-            .contact-section { padding: 30px 20px; border-radius: 16px; }
-            .contact-title { font-size: 24px; margin-bottom: 25px; }
+            .contact-header { padding: 20px; }
+            .contact-header-title { font-size: 20px; }
+            .contact-inner { padding: 0 20px 25px; }
             .contact-grid { grid-template-columns: 1fr; gap: 20px; }
             .contact-item { padding: 15px; }
             .contact-label { font-size: 14px; }
@@ -753,24 +798,31 @@
             </div>
         </div>
 
-        <div class="contact-section">
-            <h2 class="contact-title">اطلاعات تماس</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <div class="contact-label">تلفن</div>
-                    <div class="contact-value">۰۲۱-۱۲۳۴۵۶۷۸</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">ایمیل</div>
-                    <div class="contact-value">info@example.com</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">آدرس</div>
-                    <div class="contact-value">تهران، خیابان ولیعصر</div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-label">ساعات کاری</div>
-                    <div class="contact-value">شنبه تا چهارشنبه ۹ صبح تا ۵ عصر</div>
+        <div class="contact-section" id="contactSection">
+            <div class="contact-header" id="contactHeader">
+                <span class="contact-header-title">اطلاعات تماس</span>
+                <span class="contact-toggle" id="contactToggle">▼</span>
+            </div>
+            <div class="contact-content" id="contactContent">
+                <div class="contact-inner">
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-label">تلفن</div>
+                            <div class="contact-value">۰۲۱-۱۲۳۴۵۶۷۸</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">ایمیل</div>
+                            <div class="contact-value">info@example.com</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">آدرس</div>
+                            <div class="contact-value">تهران، خیابان ولیعصر</div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-label">ساعات کاری</div>
+                            <div class="contact-value">شنبه تا چهارشنبه ۹ صبح تا ۵ عصر</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -803,6 +855,8 @@
             const plateLeft = document.getElementById('plateLeft');
             const plateRight = document.getElementById('plateRight');
             const backgroundPoem = document.getElementById('backgroundPoem');
+            const contactSection = document.getElementById('contactSection');
+            const contactHeader = document.getElementById('contactHeader');
             const infoSection = document.getElementById('infoSection');
             const infoHeader = document.getElementById('infoHeader');
 
@@ -823,6 +877,11 @@
                 body.classList.add('dark');
                 themeBtn.innerHTML = 'حالت روشن';
             }
+
+            // Contact section toggle
+            contactHeader.addEventListener('click', function() {
+                contactSection.classList.toggle('open');
+            });
 
             // Info section toggle
             infoHeader.addEventListener('click', function() {
