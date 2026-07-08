@@ -6,7 +6,7 @@
 
 <title>ابراهیم نیکدل مقدم</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500&family=Noto+Naskh+Arabic:wght@700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -63,7 +63,9 @@ body{
 }
 
 .logo{
+    font-family:"Noto Naskh Arabic",serif;
     font-size:38px;
+    font-weight:700;
     text-align:center;
     padding:35px 20px;
     border-bottom:1px solid var(--border);
@@ -110,7 +112,6 @@ body{
     line-height:2;
 }
 
-
 .theme-switch{
     margin:25px;
     padding:12px;
@@ -122,6 +123,12 @@ body{
     font-family:"Vazirmatn";
     font-size:16px;
     width:calc(100% - 50px);
+    transition:.3s;
+}
+
+.theme-switch:hover{
+    background:#111;
+    color:white;
 }
 
 
@@ -139,36 +146,31 @@ body{
         width:100%;
     }
 
-
     .sidebar{
         width:100%;
         border-left:none;
         border-bottom:1px solid var(--border);
     }
 
-
     .logo{
+        font-family:"Noto Naskh Arabic",serif;
         font-size:30px;
         padding:25px 15px;
     }
-
 
     .menu a{
         font-size:16px;
         padding:16px;
     }
 
-
     .content{
         padding:30px 20px;
         text-align:right;
     }
 
-
     .content h1{
         font-size:30px;
     }
-
 
     .content p{
         font-size:15px;
