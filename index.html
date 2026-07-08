@@ -14,7 +14,7 @@
         }
 
         :root {
-            --background: #f3f4f6;
+            --bg: #f3f4f6;
             --card: white;
             --text: #111;
             --secondary: #666;
@@ -22,16 +22,16 @@
             --scale-main: #6b7280;
             --scale-accent: #9ca3af;
             --scale-light: #d1d5db;
-            --scale-shadow: rgba(0,0,0,0.15);
+            --scale-shadow: rgba(0,0,0,0.12);
             --plate-bg: #f9fafb;
             --plate-border: #9ca3af;
             --feather-color: #4b5563;
             --heart-color: #6b7280;
-            --object-glow: rgba(0,0,0,0.1);
+            --poem-opacity: 0.05;
         }
 
         .dark {
-            --background: #101010;
+            --bg: #101010;
             --card: #1c1c1c;
             --text: #f5f5f5;
             --secondary: #aaa;
@@ -44,24 +44,23 @@
             --plate-border: #e5e7eb;
             --feather-color: #e5e7eb;
             --heart-color: #d1d5db;
-            --object-glow: rgba(255,255,255,0.08);
+            --poem-opacity: 0.07;
         }
 
         html, body {
             overflow-x: hidden;
             width: 100%;
-            position: relative;
+            height: 100%;
         }
 
         body {
-            background: var(--background);
+            background: var(--bg);
             font-family: "Vazirmatn", sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 15px;
-            transition: background 0.35s;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
         }
@@ -74,8 +73,7 @@
             border-radius: 22px;
             overflow: hidden;
             display: flex;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
-            transition: background 0.35s;
+            box-shadow: 0 20px 50px rgba(0,0,0,.12);
         }
 
         .sidebar {
@@ -83,7 +81,6 @@
             min-width: 300px;
             background: var(--card);
             border-left: 1px solid var(--border);
-            transition: background 0.35s, border-color 0.35s;
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
@@ -97,7 +94,6 @@
             padding: 35px 20px;
             line-height: 2;
             border-bottom: 1px solid var(--border);
-            transition: color 0.35s, border-color 0.35s;
         }
 
         .menu {
@@ -107,7 +103,6 @@
 
         .menu li {
             border-bottom: 1px solid var(--border);
-            transition: border-color 0.35s;
         }
 
         .menu a {
@@ -116,9 +111,6 @@
             color: var(--text);
             padding: 20px 25px;
             font-size: 18px;
-            transition: color 0.25s, background 0.25s, padding 0.25s;
-            position: relative;
-            will-change: padding;
         }
 
         .menu a:hover {
@@ -144,88 +136,62 @@
             font-size: 36px;
             margin-bottom: 16px;
             text-align: center;
-            transition: color 0.35s;
         }
 
         .content p {
             color: var(--secondary);
             line-height: 2.2;
             text-align: center;
-            transition: color 0.35s;
             max-width: 500px;
         }
 
-        /* ---- Background Poem Behind Scale ---- */
+        /* Wrapper */
         .scale-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 15px;
-            contain: layout style paint;
+            width: 300px;
+            height: 320px;
         }
 
+        /* Poem - absolutely no animation, just static text with conditional glow */
         .background-poem {
             position: absolute;
             font-family: "Noto Nastaliq Urdu", serif;
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text);
-            opacity: 0.05;
+            opacity: var(--poem-opacity);
             z-index: 0;
             pointer-events: none;
             text-align: center;
-            line-height: 2.4;
+            line-height: 2.5;
             white-space: pre-line;
-            will-change: text-shadow, opacity;
-            transition: opacity 0.4s ease;
-            max-width: 320px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            transition: text-shadow 0.3s ease, opacity 0.3s ease;
         }
 
         .background-poem.glowing {
-            opacity: 0.22;
-            animation: glowPulse 1.5s ease-in-out forwards;
+            opacity: 0.25;
+            text-shadow: 
+                0 0 12px rgba(135,206,235,0.9),
+                0 0 28px rgba(135,206,235,0.5),
+                0 0 45px rgba(128,128,0,0.5);
         }
 
-        @keyframes glowPulse {
-            0% {
-                text-shadow: 
-                    0 0 10px rgba(135, 206, 235, 0.8),
-                    0 0 20px rgba(135, 206, 235, 0.5),
-                    0 0 35px rgba(128, 128, 0, 0.4);
-            }
-            50% {
-                text-shadow: 
-                    0 0 18px rgba(135, 206, 235, 1),
-                    0 0 35px rgba(135, 206, 235, 0.7),
-                    0 0 55px rgba(128, 128, 0, 0.6);
-            }
-            100% {
-                text-shadow: 
-                    0 0 10px rgba(135, 206, 235, 0.8),
-                    0 0 20px rgba(135, 206, 235, 0.5),
-                    0 0 35px rgba(128, 128, 0, 0.4);
-            }
-        }
-
-        /* Polished Interactive Justice Scale */
-        .justice-scale-container {
-            display: flex;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            contain: layout style paint;
-        }
-
+        /* Scale */
         .justice-scale {
             position: relative;
             width: 240px;
             height: 300px;
             cursor: pointer;
             z-index: 2;
-            contain: layout style;
         }
 
-        /* Base platform */
         .scale-base {
             position: absolute;
             bottom: 0;
@@ -236,7 +202,6 @@
             background: linear-gradient(to bottom, var(--scale-accent), var(--scale-main));
             border-radius: 4px;
             box-shadow: 0 4px 6px var(--scale-shadow);
-            will-change: background;
         }
 
         .scale-base::after {
@@ -251,7 +216,6 @@
             border-radius: 3px;
         }
 
-        /* Vertical pole */
         .scale-pole {
             position: absolute;
             bottom: 16px;
@@ -262,10 +226,8 @@
             background: linear-gradient(to right, var(--scale-main), var(--scale-accent), var(--scale-main));
             border-radius: 3px;
             box-shadow: 0 2px 4px var(--scale-shadow);
-            will-change: background;
         }
 
-        /* Top ornament */
         .scale-ornament {
             position: absolute;
             top: 2px;
@@ -279,7 +241,6 @@
             z-index: 2;
         }
 
-        /* Beam */
         .scale-beam {
             position: absolute;
             top: 40px;
@@ -290,9 +251,6 @@
             border-radius: 4px;
             box-shadow: 0 4px 8px var(--scale-shadow);
             transform-origin: center center;
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
 
         .scale-beam.pulled-left {
@@ -303,7 +261,6 @@
             transform: rotate(8deg);
         }
 
-        /* Chains */
         .chain-left, .chain-right {
             position: absolute;
             top: 12px;
@@ -317,13 +274,11 @@
                 var(--scale-light) 8px
             );
             border-radius: 1px;
-            will-change: background;
         }
 
         .chain-left { left: 30px; }
         .chain-right { right: 30px; }
 
-        /* Hanging plates */
         .plate-left, .plate-right {
             position: absolute;
             top: 92px;
@@ -336,10 +291,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: visible;
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
 
         .plate-left { left: 7px; }
@@ -347,7 +298,6 @@
         .plate-left.pulled { transform: translateY(15px); }
         .plate-right.pulled { transform: translateY(15px); }
 
-        /* Plate strings */
         .plate-left::before, .plate-right::before,
         .plate-left::after, .plate-right::after {
             content: '';
@@ -363,18 +313,11 @@
         .plate-right::before { left: 10px; }
         .plate-right::after { right: 10px; }
 
-        /* ---- Feather of Ma'at ---- */
+        /* Feather */
         .feather-container {
             position: relative;
             width: 40px;
             height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: featherFloat 3s ease-in-out infinite;
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
 
         .feather-shaft {
@@ -411,40 +354,17 @@
             clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
         }
 
-        .feather-barbs {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            bottom: 0;
-            opacity: 0.3;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 1px,
-                var(--feather-color) 1px,
-                var(--feather-color) 2px
-            );
-            border-radius: 0 0 2px 2px;
-        }
-
-        /* ---- Heart ---- */
+        /* Heart */
         .heart-container {
             position: relative;
             width: 28px;
             height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .heart-shape {
             position: relative;
             width: 28px;
             height: 28px;
-            animation: heartPulse 1.8s ease-in-out infinite;
-            will-change: transform;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
         }
 
         .heart-shape::before,
@@ -470,36 +390,18 @@
             transform-origin: 100% 100%;
         }
 
-        @keyframes heartPulse {
-            0%, 100% { transform: scale(1); }
-            14% { transform: scale(1.1); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.08); }
-            70% { transform: scale(1); }
-        }
-
-        @keyframes featherFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-3px) rotate(-2deg); }
-            75% { transform: translateY(-2px) rotate(2deg); }
-        }
-
-        /* Interaction hint */
         .scale-hint {
             text-align: center;
             color: var(--secondary);
             font-size: 13px;
             margin-top: 12px;
             opacity: 0.8;
-            position: relative;
             z-index: 1;
         }
 
-        /* Theme button */
         .theme-container {
             padding: 25px;
             border-top: 1px solid var(--border);
-            transition: border-color 0.35s;
         }
 
         .theme-switch {
@@ -512,7 +414,6 @@
             cursor: pointer;
             font-family: "Vazirmatn", sans-serif;
             font-size: 15px;
-            transition: background 0.25s, color 0.25s, border-color 0.35s;
         }
 
         .theme-switch:hover {
@@ -529,8 +430,9 @@
             .menu a { padding: 16px 20px; font-size: 16px; }
             .content { padding: 25px 18px; }
             .content h1 { font-size: 26px; margin-bottom: 10px; }
-            .content p { font-size: 13px; line-height: 1.9; max-width: 100%; }
-            .background-poem { font-size: 13px; line-height: 2.2; max-width: 240px; }
+            .content p { font-size: 13px; line-height: 1.9; }
+            .scale-wrapper { width: 250px; height: 280px; }
+            .background-poem { font-size: 12px; line-height: 2.3; width: 220px; }
             .justice-scale { width: 200px; height: 260px; }
             .scale-beam { width: 170px; left: 15px; top: 35px; }
             .chain-left { left: 25px; }
@@ -554,7 +456,8 @@
 
         @media(max-width:380px) {
             .content { padding: 18px 10px; }
-            .background-poem { font-size: 10px; line-height: 2; max-width: 180px; }
+            .scale-wrapper { width: 200px; height: 240px; }
+            .background-poem { font-size: 10px; line-height: 2.1; width: 170px; }
             .justice-scale { width: 160px; height: 220px; }
             .scale-beam { width: 130px; left: 15px; height: 10px; top: 30px; }
             .chain-left, .chain-right { height: 55px; top: 10px; }
@@ -592,29 +495,26 @@
 دگر عضوها را نماند قرار
 تو کز محنت دیگران بی‌غمی
 نشاید که نامت نهند آدمی</div>
-                <div class="justice-scale-container">
-                    <div class="justice-scale">
-                        <div class="scale-ornament"></div>
-                        <div class="scale-beam" id="scaleBeam">
-                            <span class="chain-left"></span>
-                            <span class="chain-right"></span>
-                        </div>
-                        <div class="plate-left" id="plateLeft">
-                            <div class="feather-container">
-                                <div class="feather-shaft"></div>
-                                <div class="feather-vane-left"></div>
-                                <div class="feather-vane-right"></div>
-                                <div class="feather-barbs"></div>
-                            </div>
-                        </div>
-                        <div class="plate-right" id="plateRight">
-                            <div class="heart-container">
-                                <div class="heart-shape"></div>
-                            </div>
-                        </div>
-                        <div class="scale-pole"></div>
-                        <div class="scale-base"></div>
+                <div class="justice-scale" id="justiceScale">
+                    <div class="scale-ornament"></div>
+                    <div class="scale-beam" id="scaleBeam">
+                        <span class="chain-left"></span>
+                        <span class="chain-right"></span>
                     </div>
+                    <div class="plate-left" id="plateLeft">
+                        <div class="feather-container">
+                            <div class="feather-shaft"></div>
+                            <div class="feather-vane-left"></div>
+                            <div class="feather-vane-right"></div>
+                        </div>
+                    </div>
+                    <div class="plate-right" id="plateRight">
+                        <div class="heart-container">
+                            <div class="heart-shape"></div>
+                        </div>
+                    </div>
+                    <div class="scale-pole"></div>
+                    <div class="scale-base"></div>
                 </div>
             </div>
             <p class="scale-hint">👆 روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
@@ -643,9 +543,10 @@
             const plateRight = document.getElementById('plateRight');
             const backgroundPoem = document.getElementById('backgroundPoem');
 
-            let glowTimeout = null;
-            let resetLeftTimeout = null;
-            let resetRightTimeout = null;
+            let glowTimer = null;
+            let leftTimer = null;
+            let rightTimer = null;
+            let isAnimating = false;
 
             function toggleTheme() {
                 body.classList.toggle('dark');
@@ -661,67 +562,62 @@
                 themeBtn.innerHTML = '☀️ حالت روشن';
             }
 
-            function triggerGlow() {
-                if (glowTimeout) return;
+            function glow() {
+                if (glowTimer) clearTimeout(glowTimer);
                 backgroundPoem.classList.add('glowing');
-                glowTimeout = setTimeout(() => {
+                glowTimer = setTimeout(function() {
                     backgroundPoem.classList.remove('glowing');
-                    glowTimeout = null;
-                }, 1500);
+                    glowTimer = null;
+                }, 1200);
+            }
+
+            function resetAll() {
+                if (leftTimer) { clearTimeout(leftTimer); leftTimer = null; }
+                if (rightTimer) { clearTimeout(rightTimer); rightTimer = null; }
+                scaleBeam.classList.remove('pulled-left', 'pulled-right');
+                plateLeft.classList.remove('pulled');
+                plateRight.classList.remove('pulled');
             }
 
             function pullLeft() {
-                if (resetLeftTimeout) clearTimeout(resetLeftTimeout);
-                if (resetRightTimeout) {
-                    clearTimeout(resetRightTimeout);
-                    scaleBeam.classList.remove('pulled-right');
-                    plateRight.classList.remove('pulled');
-                    resetRightTimeout = null;
-                }
+                resetAll();
                 scaleBeam.classList.add('pulled-left');
                 plateLeft.classList.add('pulled');
-                triggerGlow();
-                resetLeftTimeout = setTimeout(() => {
+                glow();
+                leftTimer = setTimeout(function() {
                     scaleBeam.classList.remove('pulled-left');
                     plateLeft.classList.remove('pulled');
-                    resetLeftTimeout = null;
-                }, 800);
+                    leftTimer = null;
+                }, 600);
             }
 
             function pullRight() {
-                if (resetRightTimeout) clearTimeout(resetRightTimeout);
-                if (resetLeftTimeout) {
-                    clearTimeout(resetLeftTimeout);
-                    scaleBeam.classList.remove('pulled-left');
-                    plateLeft.classList.remove('pulled');
-                    resetLeftTimeout = null;
-                }
+                resetAll();
                 scaleBeam.classList.add('pulled-right');
                 plateRight.classList.add('pulled');
-                triggerGlow();
-                resetRightTimeout = setTimeout(() => {
+                glow();
+                rightTimer = setTimeout(function() {
                     scaleBeam.classList.remove('pulled-right');
                     plateRight.classList.remove('pulled');
-                    resetRightTimeout = null;
-                }, 800);
+                    rightTimer = null;
+                }, 600);
             }
 
-            plateLeft.addEventListener('pointerdown', (e) => {
+            plateLeft.addEventListener('pointerdown', function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 pullLeft();
             });
 
-            plateRight.addEventListener('pointerdown', (e) => {
+            plateRight.addEventListener('pointerdown', function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 pullRight();
             });
 
-            plateLeft.addEventListener('touchstart', (e) => e.preventDefault());
-            plateRight.addEventListener('touchstart', (e) => e.preventDefault());
-            plateLeft.addEventListener('touchend', (e) => e.preventDefault());
-            plateRight.addEventListener('touchend', (e) => e.preventDefault());
+            // Prevent zoom
+            plateLeft.addEventListener('touchstart', function(e) { e.preventDefault(); });
+            plateRight.addEventListener('touchstart', function(e) { e.preventDefault(); });
         })();
     </script>
 </body>
