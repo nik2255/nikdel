@@ -1,9 +1,12 @@
+Here is the enhanced HTML code with improved mobile compatibility, theme-integrated justice scale, interactive plates with pulling animation, and objects appearing in the plates.
+
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ابراهیم نیکدل مقدم</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Noto+Nastaliq+Urdu:wght@600&display=swap" rel="stylesheet">
     <style>
@@ -22,6 +25,9 @@
             --scale-base: #4a4a4a;
             --scale-accent: #b8860b;
             --scale-light: #e0c87c;
+            --scale-shadow: rgba(0,0,0,0.2);
+            --plate-bg: #f5f0e0;
+            --object-color: #8b7355;
         }
 
         .dark {
@@ -33,6 +39,9 @@
             --scale-base: #d4af37;
             --scale-accent: #f0d060;
             --scale-light: #f9e076;
+            --scale-shadow: rgba(0,0,0,0.5);
+            --plate-bg: #2a2520;
+            --object-color: #c9a96e;
         }
 
         body {
@@ -42,8 +51,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 30px;
+            padding: 15px;
             transition: .35s;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         .container {
@@ -63,6 +74,8 @@
             background: var(--card);
             border-left: 1px solid var(--border);
             transition: .35s;
+            display: flex;
+            flex-direction: column;
         }
 
         .logo {
@@ -70,13 +83,15 @@
             font-size: 42px;
             text-align: center;
             color: var(--text);
-            padding: 40px 20px;
+            padding: 35px 20px;
             line-height: 2;
             border-bottom: 1px solid var(--border);
+            transition: .35s;
         }
 
         .menu {
             list-style: none;
+            flex: 1;
         }
 
         .menu li {
@@ -87,9 +102,10 @@
             display: block;
             text-decoration: none;
             color: var(--text);
-            padding: 22px 25px;
+            padding: 20px 25px;
             font-size: 18px;
             transition: .25s;
+            position: relative;
         }
 
         .menu a:hover {
@@ -98,33 +114,52 @@
             padding-right: 35px;
         }
 
+        .menu a:active {
+            transform: scale(0.98);
+        }
+
         .content {
             flex: 1;
-            padding: 70px;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
         }
 
         .content h1 {
             color: var(--text);
             font-size: 42px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: .35s;
         }
 
         .content p {
             color: var(--secondary);
             line-height: 2.2;
+            text-align: center;
+            transition: .35s;
         }
 
-        /* Polished Justice Scale */
+        /* Polished Interactive Justice Scale */
         .justice-scale-container {
             display: flex;
             justify-content: center;
-            margin-top: 40px;
+            margin-top: 30px;
+            perspective: 800px;
         }
 
         .justice-scale {
             position: relative;
             width: 240px;
-            height: 260px;
+            height: 280px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .justice-scale:active {
+            transform: scale(0.97);
         }
 
         /* Base platform */
@@ -137,7 +172,8 @@
             height: 14px;
             background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
             border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 6px var(--scale-shadow);
+            transition: all 0.35s;
         }
 
         .scale-base::after {
@@ -150,6 +186,7 @@
             height: 8px;
             background: linear-gradient(to bottom, var(--scale-light), var(--scale-accent));
             border-radius: 3px;
+            transition: all 0.35s;
         }
 
         /* Vertical pole */
@@ -159,23 +196,25 @@
             left: 50%;
             transform: translateX(-50%);
             width: 10px;
-            height: 170px;
+            height: 180px;
             background: linear-gradient(to right, var(--scale-base), var(--scale-accent), var(--scale-base));
             border-radius: 3px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px var(--scale-shadow);
+            transition: all 0.35s;
         }
 
         .scale-pole::before {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 25px;
             left: 50%;
             transform: translateX(-50%);
             width: 20px;
             height: 20px;
             background: radial-gradient(circle, var(--scale-accent), var(--scale-base));
             border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 4px var(--scale-shadow);
+            transition: all 0.35s;
         }
 
         /* Top ornament */
@@ -188,8 +227,9 @@
             height: 24px;
             background: radial-gradient(circle, var(--scale-light), var(--scale-accent));
             border-radius: 50%;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 6px var(--scale-shadow);
             z-index: 2;
+            transition: all 0.35s;
         }
 
         .scale-ornament::after {
@@ -202,34 +242,37 @@
             height: 10px;
             background: radial-gradient(circle, var(--scale-light), var(--scale-accent));
             border-radius: 50%;
+            transition: all 0.35s;
         }
 
         /* Beam */
         .scale-beam {
             position: absolute;
-            top: 35px;
+            top: 40px;
             left: 15px;
             width: 210px;
             height: 12px;
             background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
             border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 8px var(--scale-shadow);
             transform-origin: center center;
-            animation: subtleSwing 6s ease-in-out infinite;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
-        @keyframes subtleSwing {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(1.5deg); }
-            75% { transform: rotate(-1.5deg); }
+        .scale-beam.pulled-left {
+            transform: rotate(-8deg);
+        }
+
+        .scale-beam.pulled-right {
+            transform: rotate(8deg);
         }
 
         /* Chains */
         .chain-left, .chain-right {
             position: absolute;
             top: 12px;
-            width: 2px;
-            height: 70px;
+            width: 3px;
+            height: 75px;
             background: repeating-linear-gradient(
                 to bottom,
                 var(--scale-accent) 0px,
@@ -238,6 +281,7 @@
                 var(--scale-light) 8px
             );
             border-radius: 1px;
+            transition: all 0.35s;
         }
 
         .chain-left {
@@ -251,20 +295,34 @@
         /* Hanging plates */
         .plate-left, .plate-right {
             position: absolute;
-            top: 82px;
-            width: 80px;
-            height: 10px;
-            background: linear-gradient(to bottom, var(--scale-accent), var(--scale-base));
-            border-radius: 0 0 6px 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            top: 87px;
+            width: 85px;
+            height: 55px;
+            background: linear-gradient(180deg, var(--plate-bg) 0%, var(--card) 100%);
+            border: 3px solid var(--scale-accent);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 6px 12px var(--scale-shadow), inset 0 2px 4px rgba(255,255,255,0.1);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .plate-left {
-            left: 12px;
+            left: 7px;
         }
 
         .plate-right {
-            right: 12px;
+            right: 7px;
+        }
+
+        .plate-left.pulled {
+            transform: translateY(15px);
+        }
+
+        .plate-right.pulled {
+            transform: translateY(15px);
         }
 
         /* Plate strings */
@@ -272,32 +330,65 @@
         .plate-left::after, .plate-right::after {
             content: '';
             position: absolute;
-            top: -25px;
+            top: -28px;
             width: 2px;
-            height: 25px;
+            height: 28px;
             background: var(--scale-accent);
+            transition: all 0.35s;
         }
 
         .plate-left::before {
-            left: 8px;
+            left: 10px;
         }
 
         .plate-left::after {
-            right: 8px;
+            right: 10px;
         }
 
         .plate-right::before {
-            left: 8px;
+            left: 10px;
         }
 
         .plate-right::after {
-            right: 8px;
+            right: 10px;
+        }
+
+        /* Objects in plates */
+        .plate-object {
+            font-size: 28px;
+            transition: all 0.5s;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 2px 3px var(--scale-shadow));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .plate-left .plate-object {
+            animation-delay: 0s;
+        }
+
+        .plate-right .plate-object {
+            animation-delay: 1.5s;
+        }
+
+        /* Interaction hint */
+        .scale-hint {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 13px;
+            margin-top: 15px;
+            opacity: 0.8;
+            transition: all 0.35s;
         }
 
         /* button */
         .theme-container {
             padding: 25px;
             border-top: 1px solid var(--border);
+            transition: .35s;
         }
 
         .theme-switch {
@@ -310,7 +401,7 @@
             cursor: pointer;
             font-family: "Vazirmatn", sans-serif;
             font-size: 15px;
-            transition: 0.2s;
+            transition: 0.25s;
         }
 
         .theme-switch:hover {
@@ -318,26 +409,151 @@
             color: var(--card);
         }
 
+        .theme-switch:active {
+            transform: scale(0.96);
+        }
+
+        /* Mobile styles */
         @media(max-width:768px) {
+            body {
+                padding: 8px;
+                align-items: flex-start;
+            }
+
             .container {
                 flex-direction: column;
+                border-radius: 16px;
+                min-height: auto;
             }
 
             .sidebar {
                 width: 100%;
                 border-left: none;
-            }
-
-            .content {
-                padding: 35px 25px;
+                border-bottom: 1px solid var(--border);
             }
 
             .logo {
-                font-size: 34px;
+                font-size: 30px;
+                padding: 25px 15px;
+            }
+
+            .menu a {
+                padding: 16px 20px;
+                font-size: 16px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .content h1 {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .content p {
+                font-size: 14px;
+                line-height: 2;
             }
 
             .justice-scale {
-                transform: scale(0.85);
+                width: 200px;
+                height: 240px;
+            }
+
+            .scale-beam {
+                width: 170px;
+                left: 15px;
+                top: 35px;
+            }
+
+            .chain-left {
+                left: 25px;
+            }
+
+            .chain-right {
+                right: 25px;
+            }
+
+            .plate-left, .plate-right {
+                width: 70px;
+                height: 45px;
+                top: 80px;
+            }
+
+            .plate-left {
+                left: 7px;
+            }
+
+            .plate-right {
+                right: 7px;
+            }
+
+            .plate-object {
+                font-size: 22px;
+            }
+
+            .scale-base {
+                width: 130px;
+            }
+
+            .scale-base::after {
+                width: 70px;
+            }
+
+            .scale-pole {
+                height: 150px;
+            }
+
+            .theme-container {
+                padding: 18px;
+            }
+
+            .scale-hint {
+                font-size: 11px;
+                margin-top: 10px;
+            }
+        }
+
+        @media(max-width:380px) {
+            .content {
+                padding: 20px 12px;
+            }
+
+            .justice-scale {
+                width: 170px;
+                height: 210px;
+            }
+
+            .scale-beam {
+                width: 140px;
+                left: 15px;
+                height: 10px;
+            }
+
+            .plate-left, .plate-right {
+                width: 60px;
+                height: 38px;
+                top: 70px;
+            }
+
+            .plate-object {
+                font-size: 18px;
+            }
+
+            .scale-pole {
+                height: 130px;
+                width: 8px;
+            }
+
+            .chain-left, .chain-right {
+                height: 60px;
+            }
+
+            .plate-left::before, .plate-right::before,
+            .plate-left::after, .plate-right::after {
+                height: 22px;
+                top: -22px;
             }
         }
     </style>
@@ -353,20 +569,25 @@
                 محتوای صفحه اینجا قرار می‌گیرد. برای اطلاعات بیشتر می‌توانید از بخش‌های مختلف سایت دیدن فرمایید.
             </p>
 
-            <!-- ترازوی عدالت با طراحی جدید و باکیفیت -->
-            <div class="justice-scale-container">
-                <div class="justice-scale">
+            <!-- ترازوی عدالت تعاملی با اشیاء -->
+            <div class="justice-scale-container" id="scaleContainer">
+                <div class="justice-scale" id="justiceScale">
                     <div class="scale-ornament"></div>
-                    <div class="scale-beam">
+                    <div class="scale-beam" id="scaleBeam">
                         <span class="chain-left"></span>
                         <span class="chain-right"></span>
                     </div>
-                    <div class="plate-left"></div>
-                    <div class="plate-right"></div>
+                    <div class="plate-left" id="plateLeft">
+                        <span class="plate-object">⚖️</span>
+                    </div>
+                    <div class="plate-right" id="plateRight">
+                        <span class="plate-object">📜</span>
+                    </div>
                     <div class="scale-pole"></div>
                     <div class="scale-base"></div>
                 </div>
             </div>
+            <p class="scale-hint">👆 روی کفه‌های ترازو کلیک کنید یا لمس کنید</p>
         </div>
 
         <div class="sidebar">
@@ -388,6 +609,7 @@
     </div>
 
     <script>
+        // Theme toggle
         function toggleTheme() {
             document.body.classList.toggle("dark");
             let button = document.querySelector(".theme-switch");
@@ -400,13 +622,102 @@
             }
         }
 
+        // Load saved theme
         window.onload = function() {
             if (localStorage.getItem("theme") == "dark") {
                 document.body.classList.add("dark");
                 document.querySelector(".theme-switch").innerHTML = "☀️ حالت روشن";
             }
+            initScaleInteraction();
+        }
+
+        // Interactive scale logic
+        function initScaleInteraction() {
+            const scaleBeam = document.getElementById('scaleBeam');
+            const plateLeft = document.getElementById('plateLeft');
+            const plateRight = document.getElementById('plateRight');
+            const scaleContainer = document.getElementById('scaleContainer');
+            const leftObject = plateLeft.querySelector('.plate-object');
+            const rightObject = plateRight.querySelector('.plate-object');
+
+            const objects = ['⚖️', '📜', '🔨', '🏛️', '📋', '💼', '🛡️', '⚡', '🔑', '📝'];
+
+            function pullLeft() {
+                // Reset
+                scaleBeam.classList.remove('pulled-right');
+                plateRight.classList.remove('pulled');
+                
+                // Pull left
+                scaleBeam.classList.add('pulled-left');
+                plateLeft.classList.add('pulled');
+                
+                // Change object with animation
+                leftObject.style.transform = 'scale(0) rotate(180deg)';
+                setTimeout(() => {
+                    leftObject.textContent = objects[Math.floor(Math.random() * objects.length)];
+                    leftObject.style.transform = 'scale(1) rotate(0deg)';
+                }, 250);
+                
+                // Reset after delay
+                setTimeout(() => {
+                    scaleBeam.classList.remove('pulled-left');
+                    plateLeft.classList.remove('pulled');
+                }, 800);
+            }
+
+            function pullRight() {
+                // Reset
+                scaleBeam.classList.remove('pulled-left');
+                plateLeft.classList.remove('pulled');
+                
+                // Pull right
+                scaleBeam.classList.add('pulled-right');
+                plateRight.classList.add('pulled');
+                
+                // Change object with animation
+                rightObject.style.transform = 'scale(0) rotate(-180deg)';
+                setTimeout(() => {
+                    rightObject.textContent = objects[Math.floor(Math.random() * objects.length)];
+                    rightObject.style.transform = 'scale(1) rotate(0deg)';
+                }, 250);
+                
+                // Reset after delay
+                setTimeout(() => {
+                    scaleBeam.classList.remove('pulled-right');
+                    plateRight.classList.remove('pulled');
+                }, 800);
+            }
+
+            // Click events for plates
+            plateLeft.addEventListener('click', (e) => {
+                e.stopPropagation();
+                pullLeft();
+            });
+
+            plateRight.addEventListener('click', (e) => {
+                e.stopPropagation();
+                pullRight();
+            });
+
+            // Touch events for mobile
+            plateLeft.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                pullLeft();
+            });
+
+            plateRight.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                pullRight();
+            });
+
+            // Prevent double-tap zoom on plates
+            plateLeft.addEventListener('touchend', (e) => e.preventDefault());
+            plateRight.addEventListener('touchend', (e) => e.preventDefault());
         }
     </script>
 </body>
 
 </html>
+```
