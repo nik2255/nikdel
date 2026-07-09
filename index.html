@@ -380,13 +380,28 @@
             transition: color 0.5s ease;
         }
 
+        /* Bar Logo - new */
+        .bar-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .bar-logo svg {
+            width: 55px;
+            height: 55px;
+            fill: var(--text);
+            stroke: var(--text);
+            transition: fill 0.5s ease, stroke 0.5s ease;
+        }
+
         /* Scale, poem, etc. unchanged... */
         .scale-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 5px;
             width: 300px;
             height: 320px;
         }
@@ -758,6 +773,10 @@
                 font-size: 13px;
                 line-height: 1.9;
             }
+            .bar-logo svg {
+                width: 45px;
+                height: 45px;
+            }
             .scale-wrapper {
                 width: 250px;
                 height: 280px;
@@ -845,6 +864,10 @@
         @media(max-width:380px) {
             .content {
                 padding: 18px 10px;
+            }
+            .bar-logo svg {
+                width: 40px;
+                height: 40px;
             }
             .scale-wrapper {
                 width: 200px;
@@ -948,6 +971,22 @@
         <div class="container">
             <div class="content">
                 <h1>خوش آمدید</h1>
+
+                <!-- Bar Logo added above the scale -->
+                <div class="bar-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Shield background -->
+                        <path d="M20,15 L80,15 L80,60 C80,80 50,95 50,95 C50,95 20,80 20,60 Z" fill="none" stroke="var(--text)" stroke-width="4" stroke-linejoin="round"/>
+                        <!-- Gavel mallet head -->
+                        <rect x="35" y="30" width="30" height="12" rx="3" fill="var(--text)" stroke="none"/>
+                        <!-- Gavel handle -->
+                        <line x1="50" y1="42" x2="50" y2="65" stroke="var(--text)" stroke-width="4" stroke-linecap="round"/>
+                        <!-- Gavel base -->
+                        <rect x="38" y="65" width="24" height="6" rx="2" fill="var(--text)" stroke="none"/>
+                        <!-- Small star above -->
+                        <polygon points="50,18 53,24 60,24 55,29 57,36 50,32 43,36 45,29 40,24 47,24" fill="var(--text)" stroke="none"/>
+                    </svg>
+                </div>
 
                 <div class="scale-wrapper">
                     <div class="background-poem" id="backgroundPoem">بنی‌آدم اعضای یکدیگرند
